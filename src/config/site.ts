@@ -10,7 +10,7 @@ export const site = {
     firstName: "Arkanullah",
 
     /* Headline that reads well to recruiters scanning quickly */
-    role: "Final-year CSE student · aspiring software engineer",
+    role: "Final-year CSE student and · aspiring software engineer",
 
     /* "What kind of work I want" */
     seeking: "Looking for my first software engineering role",

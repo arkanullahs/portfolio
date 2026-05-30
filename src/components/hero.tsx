@@ -15,7 +15,6 @@ import {
     Linkedin,
     Mail,
     MapPin,
-    Sparkles,
 } from "lucide-react";
 import { site } from "@/config/site";
 import { GlassButton } from "@/components/liquid-glass/glass-button";
@@ -142,45 +141,39 @@ export function Hero() {
                                 style={{ background: "var(--accent-tint-mid)" }}
                             />
 
-                            <div className="relative flex items-center gap-4">
+                            <div className="relative flex items-stretch gap-5">
                                 <div
-                                    className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border"
+                                    className="relative h-32 w-32 shrink-0 overflow-hidden rounded-2xl border sm:h-36 sm:w-36"
                                     style={{ borderColor: "var(--glass-border-strong)" }}
                                 >
                                     <Image
                                         src={site.avatar}
                                         alt={`${site.name} avatar`}
                                         fill
-                                        sizes="64px"
+                                        sizes="144px"
                                         className="object-cover"
                                         priority
                                         unoptimized
                                     />
                                 </div>
-                                <div className="min-w-0">
+                                <div className="flex min-w-0 flex-col justify-center py-1">
                                     <div
-                                        className="truncate text-base font-semibold"
+                                        className="text-xl font-semibold leading-tight sm:text-2xl"
                                         style={{ color: "var(--color-1)" }}
                                     >
                                         {site.name}
                                     </div>
                                     <div
-                                        className="truncate text-sm"
+                                        className="mt-1.5 text-sm leading-snug"
                                         style={{ color: "var(--text-muted)" }}
                                     >
-                                        {site.role}
+                                        {site.role.split(" · ").map((part, i) => (
+                                            <span key={i} className="block">
+                                                {part}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
-                                <span
-                                    className="ml-auto inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
-                                    style={{
-                                        borderColor: "var(--accent-tint-strong)",
-                                        background: "var(--accent-tint-soft)",
-                                        color: "var(--color-2)",
-                                    }}
-                                >
-                                    <Sparkles className="h-3 w-3" aria-hidden /> Open
-                                </span>
                             </div>
 
                             <div className="hairline mt-6" />
