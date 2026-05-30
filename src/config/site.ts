@@ -30,7 +30,7 @@ export const site = {
     location: "Dhaka, Bangladesh",
     locationShort: "Dhaka, BD",
     email: "arkanullahs@gmail.com",
-    status: "Available now",
+    status: "Available",
 
     social: {
         github: "https://github.com/arkanullahs",
