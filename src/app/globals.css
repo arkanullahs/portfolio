@@ -1,26 +1,281 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* All color tokens are emitted server-side by <ThemeTokens />
+   in src/components/theme-tokens.tsx. This file only contains structural
+   styles — tokens are referenced via `var(--token)`. */
+
+/* ============================================================================
+   NO-JS / PRE-HYDRATION FALLBACK
+   The inline boot script in <head> sets html.js-on as soon as JS runs.
+   Until then, force every fade-in element to be fully visible — so a phone
+   on flaky cellular, an iOS tab pre-hydration, or a no-JS render still shows
+   the entire portfolio.
+   ============================================================================ */
+html:not(.js-on) .motion-safe-fade {
+  opacity: 1 !important;
+  transform: none !important;
 }
+
+/* ============================================================================
+   PURE-CSS REVEAL — replaces motion.* for content visibility.
+   Runs on first paint (no JS dependency). Still respects reduced motion.
+   ============================================================================ */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: reveal-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.reveal[data-delay="1"] { animation-delay: 0.05s; }
+.reveal[data-delay="2"] { animation-delay: 0.10s; }
+.reveal[data-delay="3"] { animation-delay: 0.18s; }
+.reveal[data-delay="4"] { animation-delay: 0.26s; }
+.reveal[data-delay="5"] { animation-delay: 0.34s; }
+.reveal[data-delay="6"] { animation-delay: 0.42s; }
+.reveal[data-delay="7"] { animation-delay: 0.50s; }
+.reveal[data-delay="8"] { animation-delay: 0.58s; }
 
 @theme inline {
+  --color-color-1: var(--color-1);
+  --color-color-2: var(--color-2);
+  --color-color-3: var(--color-3);
+  --color-color-4: var(--color-4);
+  --color-color-5: var(--color-5);
+  --color-color-6: var(--color-6);
+  --color-color-7: var(--color-7);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-glow-primary: var(--glow-primary);
+  --color-glow-secondary: var(--glow-secondary);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* iOS Safari sometimes ignores body bg on overscroll */
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, var(--mesh-1), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, var(--mesh-2), transparent 60%),
+    radial-gradient(800px 800px at 50% 110%, var(--mesh-3), transparent 60%);
+  background-attachment: fixed;
+  transition: background-color 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 400ms ease;
+  /* iOS prevents fixed bg attachment on small screens — fall back gracefully */
+  min-height: 100dvh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+::selection {
+  background: var(--glow-primary);
+  color: var(--color-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   LIQUID GLASS PRIMITIVES
+   All tokens are concrete oklch() — works on iOS 26 Safari.
+   ============================================================ */
+
+.glass {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--glass-fill-start) 0%, var(--glass-fill-end) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow:
+    0 1px 0 var(--glass-shine-top) inset,
+    0 -1px 0 var(--glass-shine-bottom) inset,
+    0 30px 60px -20px var(--shadow-deep),
+    0 8px 24px -8px var(--glow-secondary);
+  transition: background 400ms ease, border-color 400ms ease;
+}
+
+.glass-strong {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--glass-fill-strong-start) 0%, var(--glass-fill-strong-end) 100%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: 28px;
+  box-shadow:
+    0 1px 0 var(--glass-shine-top) inset,
+    0 -1px 0 var(--glass-shine-bottom) inset,
+    0 40px 80px -20px var(--shadow-deep),
+    0 12px 32px -8px var(--glow-primary);
+  transition: background 400ms ease, border-color 400ms ease;
+}
+
+.glass-nav {
+  position: relative;
+  background: linear-gradient(180deg, var(--glass-fill-nav-start) 0%, var(--glass-fill-nav-end) 100%);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  border: 1px solid var(--glass-border-nav);
+  box-shadow:
+    0 1px 0 var(--glass-shine-top) inset,
+    0 -1px 0 var(--glass-shine-bottom) inset,
+    0 18px 40px -16px var(--shadow-deep),
+    0 4px 12px -4px var(--shadow-deep);
+  transition: background 400ms ease, border-color 400ms ease;
+}
+
+.glass-lens::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--glass-shine-top) 0%, transparent 35%);
+  mix-blend-mode: overlay;
+}
+
+.glass-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass, .glass-strong, .glass-nav { background: var(--glass-bg-strong); }
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--glass-border);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-3);
+  background: var(--soft-fill);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+/* Buttons */
+.btn-primary-bg {
+  background: linear-gradient(135deg, var(--btn-grad-start) 0%, var(--btn-grad-mid) 55%, var(--btn-grad-end) 100%);
+  color: var(--btn-text);
+  box-shadow:
+    0 1px 0 var(--btn-shine) inset,
+    0 -1px 0 var(--shadow-deep) inset,
+    0 10px 30px -8px var(--btn-shadow),
+    0 4px 14px -4px var(--btn-shadow);
+}
+.btn-primary-bg:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 var(--btn-shine) inset,
+    0 -1px 0 var(--shadow-deep) inset,
+    0 14px 36px -8px var(--btn-shadow),
+    0 6px 18px -4px var(--btn-shadow);
+}
+.btn-primary-bg:active { transform: translateY(0); }
+
+.btn-ghost-bg {
+  background: linear-gradient(135deg, var(--glass-fill-start) 0%, var(--glass-fill-end) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border-strong), transparent);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 40%, var(--color-4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lift {
+  transition:
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms ease,
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-hover);
+}
+
+.section-x { padding-left: 1.25rem; padding-right: 1.25rem; }
+@media (min-width: 640px) { .section-x { padding-left: 2rem; padding-right: 2rem; } }
+@media (min-width: 1024px) { .section-x { padding-left: 3rem; padding-right: 3rem; } }
+.container-x { margin-inline: auto; width: 100%; max-width: 80rem; }
+
+/* Prevent any horizontal overflow on small screens */
+html, body { overflow-x: hidden; max-width: 100%; }
+* { min-width: 0; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+@media (max-width: 640px) {
+  .animate-marquee { animation-duration: 28s; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
+
+/* Tap targets comfortable on touch; disable hover-lift on touch devices */
+@media (hover: none) {
+  .lift:hover { transform: none; }
 }
