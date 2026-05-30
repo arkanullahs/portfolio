@@ -71,7 +71,7 @@ export function Contact() {
                                     className="text-xs"
                                     style={{ color: "var(--text-muted)" }}
                                 >
-                                    Gmail, Facebook, LinkedIn or GitHub — your pick.
+                                    Gmail, Facebook, LinkedIn or GitHub
                                 </p>
                             </div>
                         </div>

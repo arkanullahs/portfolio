@@ -34,7 +34,7 @@ export const site = {
 
     social: {
         github: "https://github.com/arkanullahs",
-        linkedin: "https://www.linkedin.com/in/arkanullahsaad-4122b633b",
+        linkedin: "https://www.linkedin.com/in/arkanullah-saad-4122b633b/",
         facebook: "https://fb.com/arkusaa",
     },
 

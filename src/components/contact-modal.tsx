@@ -190,7 +190,7 @@ export function ContactModalProvider({
                             >
                                 <Mail
                                     className="h-4 w-4 shrink-0"
-                                    style={{ color: "var(--color-3)" }}
+                                    style={{ color: "var(--color-1)" }}
                                     aria-hidden
                                 />
                                 <span
@@ -233,7 +233,8 @@ export function ContactModalProvider({
                                         style={{
                                             borderColor: "var(--glass-border-strong)",
                                             background:
-                                                "color-mix(in oklch, var(--color-1) 9%, transparent)",
+                                                "color-mix(in oklch, var(--color-1) 1%, blur)",
+                                            color: "var(--color-2)",
                                         }}
                                     >
                                         <span
