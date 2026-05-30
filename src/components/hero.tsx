@@ -51,10 +51,10 @@ export function Hero() {
                         Hi, I&apos;m{" "}
                         <span className="text-gradient">{site.firstName}</span>.
                         <br />
-                        I study computer science
+                        Learning, building, and improving
                         <br />
                         <span style={{ color: "var(--color-2)" }}>
-                            Learning, building, and improving every day.
+                            every day.
                         </span>
                     </h1>
 
