@@ -24,7 +24,7 @@ export type ThemeConfig = {
 export const theme: ThemeConfig = {
     hue: 288,
     mono: false,
-    defaultMode: "dark",
+    defaultMode: "system",
 };
 
 /* ────────────────────────────────────────────────────────────────────────────

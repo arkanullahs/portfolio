@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { GlassButton } from "@/components/liquid-glass/glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { site } from "@/config/site";
+import { useContactModal } from "@/components/contact-modal";
 
 const items = [
     { id: "work", label: "Work" },
@@ -16,6 +16,7 @@ const items = [
 ];
 
 export function Nav() {
+    const { open } = useContactModal();
     const [scrolled, setScrolled] = useState(false);
     const [active, setActive] = useState("top");
     const [hovered, setHovered] = useState<string | null>(null);
@@ -64,10 +65,7 @@ export function Nav() {
                     className="ml-2 flex shrink-0 cursor-pointer items-baseline gap-1.5 text-sm font-semibold tracking-tight text-[var(--color-1)]"
                 >
                     <span>Arkanullah</span>
-                    <span
-                        className="hidden font-normal sm:inline"
-                        style={{ color: "var(--text-muted)" }}
-                    >
+                    <span className="font-normal" style={{ color: "var(--text-muted)" }}>
                         Saad
                     </span>
                 </Link>
@@ -128,8 +126,8 @@ export function Nav() {
 
                 <div className="flex shrink-0 items-center gap-2">
                     <ThemeToggle />
-                    <GlassButton size="sm" variant="ghost" asChild>
-                        <Link href={`mailto:${site.email}`}>Contact</Link>
+                    <GlassButton size="sm" variant="ghost" onClick={open}>
+                        Contact
                     </GlassButton>
                 </div>
             </motion.nav>

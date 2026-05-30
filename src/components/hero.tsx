@@ -22,8 +22,10 @@ import {
     GlassCard,
     GlassCardContent,
 } from "@/components/liquid-glass/glass-card";
+import { useContactModal } from "@/components/contact-modal";
 
 export function Hero() {
+    const { open: openContact } = useContactModal();
     const mx = useMotionValue(0);
     const my = useMotionValue(0);
     const rotX = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), {
@@ -69,15 +71,13 @@ export function Hero() {
                         className="reveal mt-9 flex flex-wrap items-center gap-3"
                         data-delay="4"
                     >
-                        <GlassButton asChild>
-                            <Link href={`mailto:${site.email}`} className="group">
-                                <Mail className="h-4 w-4" aria-hidden />
-                                Email me
-                                <ArrowUpRight
-                                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                    aria-hidden
-                                />
-                            </Link>
+                        <GlassButton onClick={openContact} className="group">
+                            <Mail className="h-4 w-4" aria-hidden />
+                            Contact me
+                            <ArrowUpRight
+                                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                aria-hidden
+                            />
                         </GlassButton>
                         <GlassButton variant="ghost" asChild>
                             <Link href="#work">View my work</Link>

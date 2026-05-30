@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
-import { theme } from "@/config/theme";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeTokens } from "@/components/theme-tokens";
+import { ContactModalProvider } from "@/components/contact-modal";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -62,12 +62,12 @@ export default function RootLayout({
             <body className="font-sans antialiased" suppressHydrationWarning>
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme={theme.defaultMode}
-                    enableSystem={theme.defaultMode === "system"}
+                    defaultTheme="system"
+                    enableSystem
                     disableTransitionOnChange={false}
                     themes={["light", "dark"]}
                 >
-                    {children}
+                    <ContactModalProvider>{children}</ContactModalProvider>
                 </ThemeProvider>
             </body>
         </html>

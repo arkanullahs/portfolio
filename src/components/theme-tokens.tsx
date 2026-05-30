@@ -66,8 +66,8 @@ function makeTokens(palette: string[], mode: "dark" | "light") {
     push("--glass-fill-end", withAlpha(c1, 0.07));
     push("--glass-fill-strong-start", withAlpha(c1, 0.22));
     push("--glass-fill-strong-end", withAlpha(c1, 0.10));
-    push("--glass-fill-nav-start", withAlpha(c7, 0.55));
-    push("--glass-fill-nav-end", withAlpha(c7, 0.40));
+    push("--glass-fill-nav-start", withAlpha(c7, 0.62));
+    push("--glass-fill-nav-end", withAlpha(c7, 0.48));
     push("--glass-bg", withAlpha(c7, 0.45));
     push("--glass-bg-strong", withAlpha(c7, 0.6));
     push("--glass-border", withAlpha(c3, 0.32));
