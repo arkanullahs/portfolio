@@ -1,5 +1,4 @@
 import { About } from "@/components/about";
-import { AvailabilityRibbon } from "@/components/availability-ribbon";
 import { Contact } from "@/components/contact";
 import { ContributionGraph } from "@/components/contribution-graph";
 import { Hero } from "@/components/hero";
@@ -15,7 +14,6 @@ export default function HomePage() {
         <main className="relative min-h-screen">
             <LiquidBackground />
             <Nav />
-            <AvailabilityRibbon />
             <Hero />
             <ServicesMarquee />
             <Projects />

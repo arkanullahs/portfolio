@@ -39,7 +39,7 @@ export function Hero() {
     return (
         <section
             id="top"
-            className="section-x relative pt-4 pb-12 sm:pt-4 sm:pb-24"
+            className="section-x relative pt-24 pb-12 sm:pt-32 sm:pb-24"
         >
             <div className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
                 <div className="lg:col-span-7">
@@ -54,7 +54,7 @@ export function Hero() {
                         I study computer science
                         <br />
                         <span style={{ color: "var(--color-2)" }}>
-                            and build apps on the side.
+                            Learning, building, and improving every day.
                         </span>
                     </h1>
 
