@@ -5,6 +5,7 @@ import { site } from "@/config/site";
 import { theme } from "@/config/theme";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeTokens } from "@/components/theme-tokens";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -69,6 +70,7 @@ export default function RootLayout({
                 >
                     {children}
                 </ThemeProvider>
+                <Analytics />
             </body>
         </html>
     );
