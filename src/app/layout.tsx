@@ -5,6 +5,7 @@ import { site } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeTokens } from "@/components/theme-tokens";
 import { ContactModalProvider } from "@/components/contact-modal";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -69,6 +70,7 @@ export default function RootLayout({
                 >
                     <ContactModalProvider>{children}</ContactModalProvider>
                 </ThemeProvider>
+                <SpeedInsights />
             </body>
         </html>
     );
