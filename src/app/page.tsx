@@ -1,4 +1,5 @@
 import { About } from "@/components/about";
+import { Achievements } from "@/components/achievements";
 import { Contact } from "@/components/contact";
 import { ContributionGraph } from "@/components/contribution-graph";
 import { Hero } from "@/components/hero";
@@ -21,6 +22,7 @@ export default function HomePage() {
             <ContributionGraph />
             <About />
             <Stack />
+            <Achievements />
             <Contact />
         </main>
     );
