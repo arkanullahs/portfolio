@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useActiveSection } from "@/lib/use-active-section";
+import { site } from "@/config/site";
 import { GlassButton } from "@/components/liquid-glass/glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useContactModal } from "@/components/contact-modal";
 
 const items = [
-    { id: "work", label: "Work" },
+    { id: "work-intro", label: "Work" },
     { id: "about", label: "About" },
     { id: "stack", label: "Stack" },
     { id: "contact", label: "Contact" },
@@ -18,7 +20,9 @@ const items = [
 export function Nav() {
     const { open } = useContactModal();
     const [scrolled, setScrolled] = useState(false);
-    const [active, setActive] = useState("top");
+    const active = useActiveSection(
+        site.levels.map((l) => l.id)
+    );
     const [hovered, setHovered] = useState<string | null>(null);
 
     useEffect(() => {
@@ -26,23 +30,6 @@ export function Nav() {
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
-    }, []);
-
-    useEffect(() => {
-        const sections = ["top", ...items.map((i) => i.id)]
-            .map((id) => document.getElementById(id))
-            .filter((el): el is HTMLElement => el !== null);
-        if (!sections.length) return;
-        const obs = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((e) => {
-                    if (e.isIntersecting) setActive(e.target.id);
-                });
-            },
-            { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-        );
-        sections.forEach((s) => obs.observe(s));
-        return () => obs.disconnect();
     }, []);
 
     return (
