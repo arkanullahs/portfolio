@@ -10,13 +10,16 @@ import {
 import { site } from "@/config/site";
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 const ICONS: LucideIcon[] = [Layers, Compass, Target, Handshake];
 
 export function Strengths() {
+    const revealRef = useScrollReveal();
+
     return (
-        <section className="section-x relative py-16 sm:py-24">
-            <div className="container-x">
+        <section className="snap-major section-x relative py-16 sm:py-24">
+            <div ref={revealRef} className="container-x">
                 <SectionHeading
                     eyebrow="Why hire me"
                     title="What you'd actually get."
@@ -29,8 +32,8 @@ export function Strengths() {
                         return (
                             <div
                                 key={s.title}
-                                className="reveal h-full"
-                                data-delay={String(Math.min(i + 1, 8))}
+                                className="scroll-reveal h-full"
+                                style={{ animationDelay: `${i * 100}ms` }}
                             >
                                 <GlassCard className="h-full p-6">
                                     <div

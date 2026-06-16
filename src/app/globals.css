@@ -76,7 +76,6 @@ html, body {
 
 html {
   scroll-behavior: smooth;
-  /* iOS Safari sometimes ignores body bg on overscroll */
   background: var(--background);
 }
 
@@ -89,7 +88,6 @@ body {
   background-attachment: fixed;
   transition: background-color 600ms cubic-bezier(0.16, 1, 0.3, 1),
     color 400ms ease;
-  /* iOS prevents fixed bg attachment on small screens — fall back gracefully */
   min-height: 100dvh;
 }
 
@@ -115,7 +113,6 @@ body {
 
 /* ============================================================
    LIQUID GLASS PRIMITIVES
-   All tokens are concrete oklch() — works on iOS 26 Safari.
    ============================================================ */
 
 .glass {
@@ -172,14 +169,6 @@ body {
   pointer-events: none;
   background: linear-gradient(180deg, var(--glass-shine-top) 0%, transparent 35%);
   mix-blend-mode: overlay;
-}
-
-.glass-edge::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -256,7 +245,6 @@ body {
 @media (min-width: 1024px) { .section-x { padding-left: 3rem; padding-right: 3rem; } }
 .container-x { margin-inline: auto; width: 100%; max-width: 80rem; }
 
-/* Prevent any horizontal overflow on small screens */
 html, body { overflow-x: hidden; max-width: 100%; }
 * { min-width: 0; }
 
@@ -275,7 +263,59 @@ html, body { overflow-x: hidden; max-width: 100%; }
 }
 .animate-float { animation: float-slow 6s ease-in-out infinite; }
 
-/* Tap targets comfortable on touch; disable hover-lift on touch devices */
 @media (hover: none) {
   .lift:hover { transform: none; }
+}
+
+/* ============================================================
+   GENTLE SCROLL-SNAP — only major sections
+   ============================================================ */
+html {
+  scroll-snap-type: y proximity;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; }
+}
+.snap-major {
+  scroll-snap-align: start;
+}
+
+/* ============================================================
+   SCROLL-REVEAL — elements animate in as you scroll to them
+   ============================================================ */
+@keyframes scroll-reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.scroll-reveal.is-visible {
+  animation: scroll-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================
+   SECTION DIVIDER & KEEP-READING CUES
+   ============================================================ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+}
+
+@keyframes bob-down {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.keep-reading {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  animation: bob-down 2s ease-in-out infinite;
 }

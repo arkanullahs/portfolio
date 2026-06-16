@@ -5,15 +5,18 @@ import { experience } from "@/config/experience";
 import { site } from "@/config/site";
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 export function About() {
+    const revealRef = useScrollReveal();
+
     return (
-        <section id="about" className="section-x relative py-16 sm:py-24">
-            <div className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12">
+        <section id="about" className="snap-major section-x relative py-16 sm:py-24">
+            <div ref={revealRef} className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                     <SectionHeading eyebrow="About" title="A bit about me." />
 
-                    <div className="reveal mt-6 space-y-4" data-delay="2">
+                    <div className="scroll-reveal mt-6 space-y-4">
                         {site.about.map((p, i) => (
                             <p
                                 key={i}
@@ -25,7 +28,7 @@ export function About() {
                         ))}
                     </div>
 
-                    <div className="reveal mt-8" data-delay="3">
+                    <div className="scroll-reveal mt-8" style={{ animationDelay: "150ms" }}>
                         <GlassCard className="flex items-center gap-4 p-5">
                             <div
                                 className="grid h-12 w-12 place-items-center rounded-2xl border"
@@ -69,8 +72,8 @@ export function About() {
                         {experience.map((job, i) => (
                             <li
                                 key={job.company}
-                                className="reveal"
-                                data-delay={String(Math.min(i + 2, 8))}
+                                className="scroll-reveal"
+                                style={{ animationDelay: `${i * 100 + 200}ms` }}
                             >
                                 <GlassCard className="p-6">
                                     <div className="flex flex-wrap items-start justify-between gap-4">

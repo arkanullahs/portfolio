@@ -7,11 +7,14 @@ import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectCover } from "@/components/project-cover";
 import { SkillIcon } from "@/components/brand-icons";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 export function Projects() {
+    const revealRef = useScrollReveal();
+
     return (
-        <section id="work" className="section-x relative py-16 sm:py-24">
-            <div className="container-x">
+        <section id="work" className="snap-major section-x relative py-16 sm:py-24">
+            <div ref={revealRef} className="container-x">
                 <SectionHeading
                     eyebrow="Work"
                     title="Things I've actually shipped."
@@ -22,8 +25,8 @@ export function Projects() {
                     {projects.map((p, i) => (
                         <div
                             key={p.id}
-                            className="reveal"
-                            data-delay={String(Math.min(i + 1, 8))}
+                            className="scroll-reveal"
+                            style={{ animationDelay: `${i * 120}ms` }}
                         >
                             <Link
                                 href={p.href}

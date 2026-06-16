@@ -40,7 +40,7 @@ export function Hero() {
     return (
         <section
             id="top"
-            className="section-x relative pt-24 pb-12 sm:pt-32 sm:pb-24"
+            className="snap-major section-x relative pt-24 pb-12 sm:pt-32 sm:pb-24"
         >
             <div className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
                 <div className="lg:col-span-7">

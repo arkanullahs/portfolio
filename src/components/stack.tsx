@@ -12,6 +12,7 @@ import { skillGroups, skills, type SkillGroup } from "@/config/skills";
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
 import { SkillIcon } from "@/components/brand-icons";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 const GROUP_ICON: Record<SkillGroup, LucideIcon> = {
     Languages: Code2,
@@ -22,9 +23,11 @@ const GROUP_ICON: Record<SkillGroup, LucideIcon> = {
 };
 
 export function Stack() {
+    const revealRef = useScrollReveal();
+
     return (
-        <section id="stack" className="section-x relative py-16 sm:py-24">
-            <div className="container-x">
+        <section id="stack" className="snap-major section-x relative py-16 sm:py-24">
+            <div ref={revealRef} className="container-x">
                 <SectionHeading
                     eyebrow="Stack"
                     title="What I work with."
@@ -38,8 +41,8 @@ export function Stack() {
                         return (
                             <div
                                 key={group}
-                                className="reveal"
-                                data-delay={String(Math.min(gi + 1, 8))}
+                                className="scroll-reveal"
+                                style={{ animationDelay: `${gi * 100}ms` }}
                             >
                                 <GlassCard className="p-6">
                                     <div className="flex items-center justify-between">
