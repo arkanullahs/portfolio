@@ -40,10 +40,6 @@ function makeTokens(palette: string[], mode: "dark" | "light") {
   // Semantic
   // Light mode gets a softly tinted off-white page bg so white cards pop.
   push("--background", isDark ? c7 : `oklch(0.965 0.014 ${theme.hue})`);
-  // Even-section bg — slightly shifted so adjacent snap-sections don't blend
-  push("--even-section-bg", isDark
-    ? withAlpha(c7, 0.92)
-    : `oklch(0.955 0.010 ${theme.hue})`);
   push("--foreground", c1);
   push("--primary", c4);
   push("--primary-foreground", isDark ? c1 : "oklch(0.98 0.02 0)");
@@ -117,6 +113,9 @@ function makeTokens(palette: string[], mode: "dark" | "light") {
     push("--btn-shadow", withAlpha(c4, 0.5));
   } else {
     // ── LIGHT MODE ──────────────────────────────────────────────
+    // c7 = lightest (≈0.98), c1 = darkest (≈0.18) in light palette.
+    // Page bg is a soft tinted off-white; cards are crisp near-white with
+    // real shadows so they read clearly. Glass fills lean light, not dark.
     push("--glass-fill-start", "oklch(1 0 0 / 0.85)");
     push("--glass-fill-end", "oklch(1 0 0 / 0.65)");
     push("--glass-fill-strong-start", "oklch(1 0 0 / 0.92)");
@@ -137,6 +136,7 @@ function makeTokens(palette: string[], mode: "dark" | "light") {
     push("--mesh-1", withAlpha(c4, 0.12));
     push("--mesh-2", withAlpha(c3, 0.10));
     push("--mesh-3", withAlpha(c5, 0.12));
+    // Inner shine is barely there in light mode; rely on shadow instead
     push("--glass-shine-top", "oklch(1 0 0 / 0.6)");
     push("--glass-shine-bottom", "oklch(1 0 0 / 0)");
     push("--soft-fill", withAlpha(c4, 0.07));

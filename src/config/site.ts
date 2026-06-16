@@ -42,7 +42,7 @@ export const site = {
 
     /* Hero stats — numbers a recruiter can verify */
     stats: [
-        { value: "3", suffix: "", label: "Shipped projects" },
+        { value: "4", suffix: "", label: "Shipped projects" },
         { value: "12", suffix: "+", label: "Public repos" },
         { value: "127", suffix: "", label: "Commits last year" },
         { value: "AUST", suffix: "", label: "B.Sc. CSE" },
@@ -76,32 +76,4 @@ export const site = {
         period: "Expected 2026",
         location: "Dhaka, Bangladesh",
     },
-    /* Section levels — drives the progress journey indicator */
-    levels: [
-        { id: "top-name", label: "Hi, I'm Arkanullah" },
-        { id: "top-card", label: "Stats" },
-        { id: "top-cta", label: "Let's connect" },
-        { id: "work-intro", label: "Work · Intro" },
-        { id: "nexted", label: "NextEd" },
-        { id: "ecrunchies", label: "eCrunchies" },
-        { id: "booknest", label: "BookNest" },
-        { id: "strengths-intro", label: "Strengths" },
-        { id: "strength-build", label: "Build the whole thing" },
-        { id: "strength-learn", label: "Learn fast" },
-        { id: "strength-care", label: "Care how it feels" },
-        { id: "strength-work", label: "Easy to work with" },
-        { id: "about-intro", label: "About · Intro" },
-        { id: "about-me", label: "About · Story" },
-        { id: "about-edu", label: "Education" },
-        { id: "about-exp", label: "Experience" },
-        { id: "about-activity", label: "Activity" },
-        { id: "stack-intro", label: "Stack · Intro" },
-        { id: "stack-languages", label: "Languages" },
-        { id: "stack-frontend", label: "Frontend" },
-        { id: "stack-mobile", label: "Mobile" },
-        { id: "stack-backend", label: "Backend" },
-        { id: "stack-data", label: "Data" },
-        { id: "achievements", label: "Achievements" },
-        { id: "contact", label: "Contact" },
-    ] as const,
 } as const;

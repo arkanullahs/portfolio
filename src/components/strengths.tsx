@@ -15,59 +15,55 @@ const ICONS: LucideIcon[] = [Layers, Compass, Target, Handshake];
 
 export function Strengths() {
     return (
-        <>
-            {/* Intro slide */}
-            <section id="strengths-intro" className="snap-section section-x relative overflow-hidden">
-                <div className="container-x py-12 sm:py-16">
-                    <SectionHeading
-                        eyebrow="Why hire me"
-                        title="What you'd actually get."
-                        description="I'm still a student, but I've shipped real apps from start to finish. Here's what that looks like in practice."
-                    />
-                </div>
-            </section>
+        <section className="section-x relative py-16 sm:py-24">
+            <div className="container-x">
+                <SectionHeading
+                    eyebrow="Why hire me"
+                    title="What you'd actually get."
+                    description="I'm still a student, but I've shipped real apps from start to finish. Here's what that looks like in practice."
+                />
 
-            {/* One strength per slide */}
-            {site.strengths.map((s, i) => {
-                const Icon = ICONS[i] ?? Layers;
-                return (
-                    <section
-                        key={s.title}
-                        id={["strength-build", "strength-learn", "strength-care", "strength-work"][i]}
-                        className="snap-section section-x relative overflow-hidden"
-                    >
-                        <div className="container-x py-12 sm:py-16">
-                            <div className="max-w-xl mx-auto text-center">
-                                <div
-                                    className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border"
-                                    style={{
-                                        borderColor: "var(--accent-tint-strong)",
-                                        background: "var(--accent-tint-soft)",
-                                    }}
-                                >
-                                    <Icon
-                                        className="h-7 w-7"
-                                        style={{ color: "var(--color-2)" }}
-                                        aria-hidden
-                                    />
-                                </div>
-                                <h2
-                                    className="mt-6 text-2xl font-semibold tracking-tight"
-                                    style={{ color: "var(--color-1)" }}
-                                >
-                                    {s.title}
-                                </h2>
-                                <p
-                                    className="mt-4 text-base leading-relaxed"
-                                    style={{ color: "var(--text-muted)" }}
-                                >
-                                    {s.body}
-                                </p>
+                <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {site.strengths.map((s, i) => {
+                        const Icon = ICONS[i] ?? Layers;
+                        return (
+                            <div
+                                key={s.title}
+                                className="reveal h-full"
+                                data-delay={String(Math.min(i + 1, 8))}
+                            >
+                                <GlassCard className="h-full p-6">
+                                    <div
+                                        className="grid h-11 w-11 place-items-center rounded-2xl border"
+                                        style={{
+                                            borderColor: "var(--accent-tint-strong)",
+                                            background: "var(--accent-tint-soft)",
+                                        }}
+                                    >
+                                        <Icon
+                                            className="h-5 w-5"
+                                            style={{ color: "var(--color-2)" }}
+                                            aria-hidden
+                                        />
+                                    </div>
+                                    <h3
+                                        className="mt-5 text-base font-semibold tracking-tight"
+                                        style={{ color: "var(--color-1)" }}
+                                    >
+                                        {s.title}
+                                    </h3>
+                                    <p
+                                        className="mt-2 text-sm leading-relaxed"
+                                        style={{ color: "var(--text-muted)" }}
+                                    >
+                                        {s.body}
+                                    </p>
+                                </GlassCard>
                             </div>
-                        </div>
-                    </section>
-                );
-            })}
-        </>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
     );
 }

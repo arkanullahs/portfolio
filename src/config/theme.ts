@@ -22,7 +22,7 @@ export type ThemeConfig = {
 };
 
 export const theme: ThemeConfig = {
-    hue: 175,
+    hue: 288,
     mono: false,
     defaultMode: "system",
 };

@@ -70,4 +70,21 @@ export const projects: Project[] = [
         cover: "browser",
         badge: "Full-stack",
     },
+    {
+        id: "cherry",
+        title: "CHERRY",
+        blurb: "A period tracker, built with a classmate.",
+        description:
+            "Track your cycle, log symptoms, and get reminders. Privacy-first, with a deliberately calm and quiet interface.",
+        highlights: [
+            "Worked on the UI screens and tracking logic with one teammate.",
+            "Built native cross-platform with C# and Xamarin.",
+            "Kept the design minimal so it's easy to read at a glance.",
+        ],
+        stack: ["C#", "Xamarin", ".NET"],
+        href: "https://github.com/NabilaRahmanMedha/CHERRY",
+        emoji: "Ch",
+        cover: "mobile",
+        badge: "Mobile · Team",
+    },
 ];

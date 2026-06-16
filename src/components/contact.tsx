@@ -10,12 +10,12 @@ export function Contact() {
     const { open } = useContactModal();
 
     return (
-        <section id="contact" className="snap-section section-x relative overflow-hidden">
-            <div className="container-x py-12 sm:py-16">
+        <section id="contact" className="section-x relative pb-24 pt-12">
+            <div className="container-x">
                 <div className="reveal mx-auto max-w-3xl" data-delay="1">
                     <GlassCard
                         variant="strong"
-                        className="overflow-hidden p-8 sm:p-12"
+                        className="overflow-hidden p-8 sm:p-14"
                         style={{
                             background:
                                 "linear-gradient(135deg, color-mix(in oklch, var(--color-1) 7%, transparent) 0%, color-mix(in oklch, var(--color-1) 3%, transparent) 100%)",
@@ -46,7 +46,7 @@ export function Contact() {
                                 <span className="text-gradient">Reach out.</span>
                             </h2>
                             <p
-                                className="mx-auto mt-4 max-w-xl text-sm leading-relaxed"
+                                className="mx-auto mt-4 max-w-xl text-base leading-relaxed"
                                 style={{ color: "var(--text-muted)" }}
                             >
                                 I&apos;m looking for my first software job, whether that&apos;s
@@ -54,7 +54,7 @@ export function Contact() {
                                 channel works for you. I reply fast.
                             </p>
 
-                            <div className="mt-7 flex flex-col items-center gap-3">
+                            <div className="mt-8 flex flex-col items-center gap-3">
                                 <GlassButton
                                     size="lg"
                                     className="group w-full max-w-xs !justify-center"
@@ -76,31 +76,31 @@ export function Contact() {
                             </div>
                         </div>
                     </GlassCard>
-
-                    <footer
-                        className="mt-8 flex flex-col items-center justify-between gap-3 text-xs sm:flex-row"
-                        style={{ color: "var(--text-muted)" }}
-                    >
-                        <div>
-                            © {new Date().getFullYear()} {site.name}. Crafted in Dhaka.
-                        </div>
-                        <div className="flex flex-wrap items-center gap-2">
-                            Built with
-                            {["Next.js 16", "Tailwind v4", "Motion"].map((t) => (
-                                <span
-                                    key={t}
-                                    className="rounded-full border px-2 py-0.5"
-                                    style={{
-                                        borderColor: "var(--glass-border)",
-                                        background: "var(--soft-fill)",
-                                    }}
-                                >
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
-                    </footer>
                 </div>
+
+                <footer
+                    className="mt-10 flex flex-col items-center justify-between gap-3 text-xs sm:flex-row"
+                    style={{ color: "var(--text-muted)" }}
+                >
+                    <div>
+                        © {new Date().getFullYear()} {site.name}. Crafted in Dhaka.
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                        Built with
+                        {["Next.js 16", "Tailwind v4", "Motion"].map((t) => (
+                            <span
+                                key={t}
+                                className="rounded-full border px-2 py-0.5"
+                                style={{
+                                    borderColor: "var(--glass-border)",
+                                    background: "var(--soft-fill)",
+                                }}
+                            >
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </footer>
             </div>
         </section>
     );

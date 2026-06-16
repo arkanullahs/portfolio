@@ -26,80 +26,8 @@ const LEVEL_TOKENS = [
     "var(--color-4)",
 ] as const;
 
-export function ContributionGraph({ compact }: { compact?: boolean }) {
+export function ContributionGraph() {
     const cells = generateCells();
-
-    if (compact) {
-        return (
-            <GlassCard className="overflow-hidden p-4">
-                <div
-                    className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full blur-3xl"
-                    style={{ background: "var(--accent-tint-soft)" }}
-                />
-                <div className="relative">
-                    <div
-                        className="text-[10px] font-semibold uppercase tracking-[0.16em]"
-                        style={{ color: "var(--text-muted)" }}
-                    >
-                        Activity
-                    </div>
-                    <h4
-                        className="mt-0.5 text-sm font-semibold tracking-tight"
-                        style={{ color: "var(--color-1)" }}
-                    >
-                        Steady commit habit
-                    </h4>
-                    <a
-                        href={site.social.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-1 inline-flex items-center gap-1 text-[10px] transition-colors hover:opacity-80"
-                        style={{ color: "var(--color-2)" }}
-                    >
-                        View on GitHub
-                    </a>
-                    <div className="relative mt-3 overflow-x-auto">
-                        <div
-                            className="grid grid-flow-col gap-[2px]"
-                            style={{ gridTemplateRows: "repeat(7, 8px)" }}
-                        >
-                            {cells.map((level, i) => (
-                                <div
-                                    key={i}
-                                    className="h-2 w-2 rounded-[2px]"
-                                    style={{
-                                        background: LEVEL_TOKENS[level],
-                                        border:
-                                            level === 0
-                                                ? "1px solid var(--glass-border)"
-                                                : "none",
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div
-                        className="relative mt-2 flex items-center justify-end gap-1.5 text-[9px]"
-                        style={{ color: "var(--text-muted)" }}
-                    >
-                        <span>Less</span>
-                        {LEVEL_TOKENS.map((tok, i) => (
-                            <span
-                                key={i}
-                                className="h-2 w-2 rounded-[2px]"
-                                style={{
-                                    background: tok,
-                                    border:
-                                        i === 0 ? "1px solid var(--glass-border)" : "none",
-                                }}
-                            />
-                        ))}
-                        <span>More</span>
-                    </div>
-                </div>
-            </GlassCard>
-        );
-    }
 
     return (
         <section className="section-x relative pb-12 pt-4">

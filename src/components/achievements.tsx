@@ -9,15 +9,15 @@ import { SectionHeading } from "@/components/section-heading";
 
 export function Achievements() {
     return (
-        <section id="achievements" className="snap-section section-x relative overflow-hidden">
-            <div className="container-x py-12 sm:py-16">
+        <section id="achievements" className="section-x relative py-16 sm:py-24">
+            <div className="container-x">
                 <SectionHeading
                     eyebrow="Recognition"
                     title="One I'm proud of."
                     description="Competed solo, shipped a full design, and took first place."
                 />
 
-                <div className="mt-8 mx-auto grid grid-cols-1 gap-6 max-w-3xl">
+                <div className="mt-12 mx-auto grid grid-cols-1 gap-6 max-w-5xl">
                     {achievements.map((a, i) => (
                         <div
                             key={a.id}
@@ -25,7 +25,7 @@ export function Achievements() {
                             data-delay={String(Math.min(i + 1, 8))}
                         >
                             <GlassCard className="lift group relative overflow-hidden p-0">
-                                <div className="relative z-10 aspect-[16/7] w-full overflow-hidden rounded-t-[23px]">
+                                <div className="relative z-10 aspect-[16/9] w-full overflow-hidden rounded-t-[23px]">
                                     <Image
                                         src="/award.jpg"
                                         alt="1st Place UI/UX Design Competition trophy and certificate"
