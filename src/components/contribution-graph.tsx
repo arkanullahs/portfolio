@@ -85,8 +85,16 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
 
                         <div className="relative mt-6 overflow-x-auto pb-1">
                             <div
-                                className="grid grid-flow-col gap-[3px]"
-                                style={{ gridTemplateRows: "repeat(7, 12px)" }}
+                                className="grid grid-flow-col justify-start gap-[3px]"
+                                style={{
+                                    gridTemplateRows: "repeat(7, 12px)",
+                                    // Implicit columns default to `auto`, which stretches to
+                                    // absorb leftover row width — fine at 52 weeks, but with
+                                    // only ~13 columns for a 90-day window the slack per
+                                    // column is huge, blowing the grid apart. Pin the track
+                                    // size so cells stay packed regardless of day count.
+                                    gridAutoColumns: "12px",
+                                }}
                             >
                                 {Array.from({ length: leadingPad }, (_, i) => (
                                     <div key={`pad-${i}`} className="h-3 w-3" />
