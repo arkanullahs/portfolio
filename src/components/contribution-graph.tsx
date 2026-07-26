@@ -31,15 +31,24 @@ function toWeeks(days: ContributionDay[]) {
     return weeks;
 }
 
-/** One label per column, set only on the week a new month starts in. */
+/**
+ * One label per column, set only on the week a new month starts in — and only
+ * if there's room. A label is wider than its 14px column, so two starting
+ * within a couple of columns render as "AprMay". The first week is usually a
+ * stub of the previous month, which is exactly when that happens.
+ */
 function monthLabels(weeks: (ContributionDay | null)[][]) {
-    let previous = -1;
-    return weeks.map((week) => {
+    let previousMonth = -1;
+    let lastLabelAt = -Infinity;
+
+    return weeks.map((week, i) => {
         const first = week.find(Boolean);
         if (!first) return null;
         const month = new Date(`${first.date}T00:00:00Z`).getUTCMonth();
-        if (month === previous) return null;
-        previous = month;
+        if (month === previousMonth) return null;
+        previousMonth = month;
+        if (i - lastLabelAt < 3) return null;
+        lastLabelAt = i;
         return MONTH[month];
     });
 }
@@ -59,7 +68,9 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
     return (
         <section className="section-x relative pb-12 pt-4">
             <div className="container-x">
-                <div className="reveal" data-delay="1">
+                {/* Sized to its contents (~700px), not the 80rem container — a
+                    full-width card leaves a dead gap between copy and grid. */}
+                <div className="reveal mx-auto max-w-3xl" data-delay="1">
                     <GlassCard className="overflow-hidden p-6 sm:p-8">
                         <div
                             className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl"
