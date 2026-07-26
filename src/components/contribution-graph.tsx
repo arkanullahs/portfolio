@@ -19,6 +19,8 @@ const MONTH = [
 
 const CELL = 14;
 const GAP = 4;
+/** "Mon"/"Wed"/"Fri" don't fit a 14px column — they'd bleed into week one. */
+const DAY_LABEL_W = 26;
 
 /** Sunday-aligned columns, front-padded and back-padded with nulls. */
 function toWeeks(days: ContributionDay[]) {
@@ -32,23 +34,26 @@ function toWeeks(days: ContributionDay[]) {
 }
 
 /**
- * One label per column, set only on the week a new month starts in — and only
- * if there's room. A label is wider than its 14px column, so two starting
- * within a couple of columns render as "AprMay". The first week is usually a
- * stub of the previous month, which is exactly when that happens.
+ * One label per column, on the week each new month starts in.
+ *
+ * Column 0 is a partial week — the tail of the month before the window opens.
+ * Labelling it puts two labels one column apart ("AprMay"), so it's dropped in
+ * favour of the real month start beside it. Dropping by proximity instead
+ * would silently lose that real month.
  */
 function monthLabels(weeks: (ContributionDay | null)[][]) {
     let previousMonth = -1;
-    let lastLabelAt = -Infinity;
 
     return weeks.map((week, i) => {
         const first = week.find(Boolean);
         if (!first) return null;
+
         const month = new Date(`${first.date}T00:00:00Z`).getUTCMonth();
-        if (month === previousMonth) return null;
+        const isNewMonth = month !== previousMonth;
         previousMonth = month;
-        if (i - lastLabelAt < 3) return null;
-        lastLabelAt = i;
+
+        if (!isNewMonth) return null;
+        if (i === 0 && week.some((d) => d === null)) return null;
         return MONTH[month];
     });
 }
@@ -122,7 +127,7 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
                                     fixed size cannot. */}
                                 <div
                                     className="flex"
-                                    style={{ gap: GAP, marginLeft: CELL + GAP }}
+                                    style={{ gap: GAP, marginLeft: DAY_LABEL_W + GAP }}
                                 >
                                     {labels.map((label, i) => (
                                         <div
@@ -151,8 +156,8 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
                                         {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
                                             <span
                                                 key={i}
-                                                className="flex items-center"
-                                                style={{ height: CELL, width: CELL }}
+                                                className="flex items-center justify-end pr-1"
+                                                style={{ height: CELL, width: DAY_LABEL_W }}
                                             >
                                                 {d}
                                             </span>
