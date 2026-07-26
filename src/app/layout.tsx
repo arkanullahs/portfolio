@@ -29,9 +29,10 @@ export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
     viewportFit: "cover",
+    // Must track --background in theme-tokens.tsx (oklch 0.145 / 0.985 @ hue 255).
     themeColor: [
-        { media: "(prefers-color-scheme: dark)", color: "#0e0a18" },
-        { media: "(prefers-color-scheme: light)", color: "#fbf9ff" },
+        { media: "(prefers-color-scheme: dark)", color: "#0c0d11" },
+        { media: "(prefers-color-scheme: light)", color: "#f9f9fc" },
     ],
 };
 

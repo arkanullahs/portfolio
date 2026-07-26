@@ -185,7 +185,7 @@ body {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--color-3);
+  color: var(--accent-text);
   background: var(--soft-fill);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
@@ -222,12 +222,37 @@ body {
   background: linear-gradient(90deg, transparent, var(--glass-border-strong), transparent);
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 40%, var(--color-4) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Solid accent for the one or two words per page that carry emphasis.
+   Deliberately NOT a gradient — gradient headings are decorative noise. */
+.text-accent {
+  color: var(--accent-text);
 }
+
+/* Live status dot — soft halo pulse, no layout shift. */
+@keyframes status-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--glow-primary); }
+  70%  { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.status-dot {
+  position: relative;
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-radius: 9999px;
+  background: var(--accent-dot);
+  animation: status-pulse 2.4s ease-out infinite;
+}
+
+/* Underline that grows from the left on hover. */
+.link-underline {
+  background-image: linear-gradient(var(--accent-text), var(--accent-text));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover { background-size: 100% 1px; }
 
 .lift {
   transition:

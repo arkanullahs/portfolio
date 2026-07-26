@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight, Check, Github } from "lucide-react";
-import { projects } from "@/config/projects";
+import { gridProjects } from "@/config/projects";
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectCover } from "@/components/project-cover";
@@ -17,19 +17,19 @@ export function Projects() {
             <div ref={revealRef} className="container-x">
                 <SectionHeading
                     eyebrow="Work"
-                    title="Things I've actually shipped."
+                    title="The rest of what I've shipped."
                     description="Every card links to a real GitHub repo. Open one to read the code and the README."
                 />
 
                 <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-                    {projects.map((p, i) => (
+                    {gridProjects.map((p, i) => (
                         <div
                             key={p.id}
                             className="scroll-reveal"
                             style={{ animationDelay: `${i * 120}ms` }}
                         >
                             <Link
-                                href={p.href}
+                                href={p.href ?? p.live ?? "#"}
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label={`${p.title} on GitHub`}
@@ -99,7 +99,7 @@ export function Projects() {
                                                 >
                                                     <Check
                                                         className="mt-0.5 h-4 w-4 shrink-0"
-                                                        style={{ color: "var(--color-3)" }}
+                                                        style={{ color: "var(--accent-text)" }}
                                                         aria-hidden
                                                     />
                                                     <span>{h}</span>
@@ -124,13 +124,15 @@ export function Projects() {
                                             ))}
                                         </div>
 
-                                        <div
-                                            className="mt-5 flex items-center gap-2 text-xs"
-                                            style={{ color: "var(--text-muted)" }}
-                                        >
-                                            <Github className="h-3.5 w-3.5" aria-hidden />
-                                            github.com/{p.href.split("/").slice(-2).join("/")}
-                                        </div>
+                                        {p.href && (
+                                            <div
+                                                className="mt-5 flex items-center gap-2 text-xs"
+                                                style={{ color: "var(--text-muted)" }}
+                                            >
+                                                <Github className="h-3.5 w-3.5" aria-hidden />
+                                                github.com/{p.href.split("/").slice(-2).join("/")}
+                                            </div>
+                                        )}
                                     </div>
                                 </GlassCard>
                             </Link>

@@ -32,7 +32,7 @@ export function Contact() {
                                 Available now
                             </div>
                             <h2 className="mt-5 text-balance text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[var(--color-1)]">
-                                Got a role that fits? <span className="text-gradient">Reach out.</span>
+                                Got a role that fits? <span className="text-accent">Reach out.</span>
                             </h2>
                             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)]">
                                 I&apos;m looking for my first software job, whether that&apos;s

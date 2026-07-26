@@ -69,7 +69,7 @@ export function ServicesMarquee() {
                         >
                             <Icon
                                 className="h-4 w-4 shrink-0"
-                                style={{ color: "var(--color-3)" }}
+                                style={{ color: "var(--accent-text)" }}
                                 aria-hidden
                             />
                             <span className="whitespace-nowrap text-xs font-medium sm:text-sm" style={{ color: "var(--color-1)" }}>

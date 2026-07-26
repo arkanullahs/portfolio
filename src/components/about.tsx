@@ -39,7 +39,7 @@ export function About() {
                             >
                                 <GraduationCap
                                     className="h-5 w-5"
-                                    style={{ color: "var(--color-3)" }}
+                                    style={{ color: "var(--accent-text)" }}
                                     aria-hidden
                                 />
                             </div>
@@ -87,7 +87,7 @@ export function About() {
                                             >
                                                 <Briefcase
                                                     className="h-4 w-4"
-                                                    style={{ color: "var(--color-3)" }}
+                                                    style={{ color: "var(--accent-text)" }}
                                                     aria-hidden
                                                 />
                                             </div>

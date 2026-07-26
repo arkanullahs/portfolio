@@ -107,8 +107,8 @@ function BrowserMockup({ title, emoji }: { title: string; emoji: string }) {
                     <div
                         className="grid h-10 w-10 place-items-center rounded-xl text-[10px] font-bold"
                         style={{
-                            background: "linear-gradient(135deg, var(--color-2), var(--color-3))",
-                            color: "var(--color-7)",
+                            background: "linear-gradient(135deg, var(--btn-grad-mid), var(--btn-grad-start))",
+                            color: "var(--on-accent)",
                         }}
                     >
                         {emoji}
@@ -152,8 +152,8 @@ function MobileMockup({ emoji }: { emoji: string }) {
                     <div
                         className="grid h-8 w-8 place-items-center rounded-xl text-[9px] font-bold"
                         style={{
-                            background: "linear-gradient(135deg, var(--color-2), var(--color-3))",
-                            color: "var(--color-7)",
+                            background: "linear-gradient(135deg, var(--btn-grad-mid), var(--btn-grad-start))",
+                            color: "var(--on-accent)",
                         }}
                     >
                         {emoji}
