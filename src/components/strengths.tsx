@@ -45,7 +45,7 @@ export function Strengths() {
                                     >
                                         <Icon
                                             className="h-5 w-5"
-                                            style={{ color: "var(--color-2)" }}
+                                            style={{ color: "var(--accent-text)" }}
                                             aria-hidden
                                         />
                                     </div>

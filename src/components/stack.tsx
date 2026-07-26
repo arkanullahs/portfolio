@@ -5,7 +5,9 @@ import {
     Layout,
     Smartphone,
     Server,
+    Sparkles,
     Database,
+    GitBranch,
     type LucideIcon,
 } from "lucide-react";
 import { skillGroups, skills, type SkillGroup } from "@/config/skills";
@@ -19,7 +21,9 @@ const GROUP_ICON: Record<SkillGroup, LucideIcon> = {
     Frontend: Layout,
     Mobile: Smartphone,
     Backend: Server,
+    AI: Sparkles,
     Data: Database,
+    Infra: GitBranch,
 };
 
 export function Stack() {
@@ -56,7 +60,7 @@ export function Stack() {
                                             >
                                                 <Icon
                                                     className="h-4 w-4"
-                                                    style={{ color: "var(--color-3)" }}
+                                                    style={{ color: "var(--accent-text)" }}
                                                     aria-hidden
                                                 />
                                             </div>

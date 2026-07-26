@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { useContactModal } from "@/components/contact-modal";
 
 const items = [
+    { id: "flagship", label: "BhaloPhone" },
     { id: "work", label: "Work" },
     { id: "about", label: "About" },
     { id: "stack", label: "Stack" },

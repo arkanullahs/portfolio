@@ -57,7 +57,7 @@ export function Achievements() {
                                     <ul className="mt-3 space-y-1.5 text-sm">
                                         {a.highlights.map((h) => (
                                             <li key={h} className="flex items-start gap-2 text-[var(--text-muted)]">
-                                                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-3)]" aria-hidden />
+                                                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent-dot)]" aria-hidden />
                                                 <span>{h}</span>
                                             </li>
                                         ))}
@@ -65,7 +65,7 @@ export function Achievements() {
                                     {a.url && a.urlLabel && (
                                         <div className="mt-4">
                                             <Link href={a.url} target="_blank" rel="noreferrer"
-                                                className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-80 text-[var(--color-2)]">
+                                                className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-80 text-[var(--accent-text)]">
                                                 {a.urlLabel} <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
                                             </Link>
                                         </div>

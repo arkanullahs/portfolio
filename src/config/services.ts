@@ -23,15 +23,15 @@ export type Service = {
 
 export const services: Service[] = [
     { icon: "Code2", label: "Full-stack web" },
-    { icon: "Smartphone", label: "Cross-platform mobile" },
+    { icon: "Sparkles", label: "RAG pipelines" },
+    { icon: "Cpu", label: "LLM orchestration" },
     { icon: "Server", label: "REST APIs" },
+    { icon: "Smartphone", label: "Cross-platform mobile" },
     { icon: "Database", label: "Database design" },
+    { icon: "GitBranch", label: "CI/CD automation" },
+    { icon: "Box", label: "Web scraping" },
     { icon: "Layers", label: "Design systems" },
-    { icon: "Cpu", label: "Real-time chat" },
-    { icon: "GitBranch", label: "Git workflow" },
-    { icon: "Box", label: "Component libraries" },
     { icon: "Zap", label: "Performance audits" },
-    { icon: "Sparkles", label: "Polished UX" },
     { icon: "Rocket", label: "MVP shipping" },
     { icon: "ShieldCheck", label: "Auth & security" },
 ];

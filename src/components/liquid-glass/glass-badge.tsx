@@ -10,7 +10,7 @@ const glassBadgeVariants = cva(
                 default:
                     "border border-[var(--glass-border)] bg-[var(--soft-fill)] text-[var(--text-muted)]",
                 accent:
-                    "border border-[var(--accent-tint-strong)] bg-[var(--accent-tint-soft)] text-[var(--color-3)]",
+                    "border border-[var(--accent-tint-strong)] bg-[var(--accent-tint-soft)] text-[var(--accent-text)]",
                 outline:
                     "border border-[var(--glass-border-strong)] bg-transparent text-[var(--text-muted)]",
             },
