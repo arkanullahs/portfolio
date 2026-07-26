@@ -2,7 +2,7 @@
 
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { site } from "@/config/site";
-import type { GitHubStats } from "@/lib/github";
+import type { ContributionDay, GitHubStats } from "@/lib/github";
 
 const LEVEL_TOKENS = [
     "var(--soft-fill)",
@@ -17,9 +17,31 @@ const MONTH = [
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ] as const;
 
-function monthLabel(iso: string) {
-    const d = new Date(`${iso}T00:00:00Z`);
-    return `${MONTH[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+const CELL = 14;
+const GAP = 4;
+
+/** Sunday-aligned columns, front-padded and back-padded with nulls. */
+function toWeeks(days: ContributionDay[]) {
+    const pad = new Date(`${days[0].date}T00:00:00Z`).getUTCDay();
+    const cells: (ContributionDay | null)[] = [...Array(pad).fill(null), ...days];
+    while (cells.length % 7 !== 0) cells.push(null);
+
+    const weeks: (ContributionDay | null)[][] = [];
+    for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+    return weeks;
+}
+
+/** One label per column, set only on the week a new month starts in. */
+function monthLabels(weeks: (ContributionDay | null)[][]) {
+    let previous = -1;
+    return weeks.map((week) => {
+        const first = week.find(Boolean);
+        if (!first) return null;
+        const month = new Date(`${first.date}T00:00:00Z`).getUTCMonth();
+        if (month === previous) return null;
+        previous = month;
+        return MONTH[month];
+    });
 }
 
 /**
@@ -31,10 +53,8 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
     if (!gh) return null;
 
     const { days, contributions } = gh;
-
-    // GitHub's first week is partial, so pad to keep Sun-Sat rows aligned.
-    const leadingPad = new Date(`${days[0].date}T00:00:00Z`).getUTCDay();
-    const range = `${monthLabel(days[0].date)} – ${monthLabel(days[days.length - 1].date)}`;
+    const weeks = toWeeks(days);
+    const labels = monthLabels(weeks);
 
     return (
         <section className="section-x relative pb-12 pt-4">
@@ -45,8 +65,12 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
                             className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl"
                             style={{ background: "var(--accent-tint-soft)" }}
                         />
-                        <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-                            <div>
+
+                        {/* 90 days is only ~13 columns — a small object. It sits beside
+                            the copy rather than under it, so the card reads as one
+                            balanced row instead of a tiny grid stranded in whitespace. */}
+                        <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+                            <div className="min-w-0">
                                 <div
                                     className="text-xs font-semibold uppercase tracking-[0.16em]"
                                     style={{ color: "var(--text-muted)" }}
@@ -61,78 +85,125 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
                                     contributions in the last 90 days
                                 </h3>
                                 <p
-                                    className="mt-1 text-sm"
+                                    className="mt-1 max-w-sm text-sm"
                                     style={{ color: "var(--text-muted)" }}
                                 >
-                                    {range}. Pulled live from the GitHub API, not a
-                                    screenshot.
+                                    Pulled live from the GitHub API, not a screenshot.
                                 </p>
-                            </div>
-                            <a
-                                href={site.social.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors duration-200 hover:border-[var(--glass-border-hover)]"
-                                style={{
-                                    borderColor: "var(--glass-border)",
-                                    background: "var(--soft-fill)",
-                                    color: "var(--text-muted)",
-                                }}
-                            >
-                                View on GitHub
-                            </a>
-                        </div>
-
-                        <div className="relative mt-6 overflow-x-auto pb-1">
-                            <div
-                                className="grid grid-flow-col justify-start gap-[3px]"
-                                style={{
-                                    gridTemplateRows: "repeat(7, 12px)",
-                                    // Implicit columns default to `auto`, which stretches to
-                                    // absorb leftover row width — fine at 52 weeks, but with
-                                    // only ~13 columns for a 90-day window the slack per
-                                    // column is huge, blowing the grid apart. Pin the track
-                                    // size so cells stay packed regardless of day count.
-                                    gridAutoColumns: "12px",
-                                }}
-                            >
-                                {Array.from({ length: leadingPad }, (_, i) => (
-                                    <div key={`pad-${i}`} className="h-3 w-3" />
-                                ))}
-                                {days.map((d) => (
-                                    <div
-                                        key={d.date}
-                                        className="h-3 w-3 rounded-[3px]"
-                                        title={`${d.count} contribution${d.count === 1 ? "" : "s"} on ${d.date}`}
-                                        style={{
-                                            background: LEVEL_TOKENS[d.level],
-                                            border:
-                                                d.level === 0
-                                                    ? "1px solid var(--glass-border)"
-                                                    : "none",
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-
-                        <div
-                            className="relative mt-4 flex items-center justify-end gap-2 text-[10px]"
-                            style={{ color: "var(--text-muted)" }}
-                        >
-                            <span>Less</span>
-                            {LEVEL_TOKENS.map((tok, i) => (
-                                <span
-                                    key={i}
-                                    className="h-3 w-3 rounded-[3px]"
+                                <a
+                                    href={site.social.github}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="mt-4 inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors duration-200 hover:border-[var(--glass-border-hover)]"
                                     style={{
-                                        background: tok,
-                                        border:
-                                            i === 0 ? "1px solid var(--glass-border)" : "none",
+                                        borderColor: "var(--glass-border)",
+                                        background: "var(--soft-fill)",
+                                        color: "var(--text-muted)",
                                     }}
-                                />
-                            ))}
-                            <span>More</span>
+                                >
+                                    View on GitHub
+                                </a>
+                            </div>
+
+                            <div className="shrink-0 overflow-x-auto pb-1">
+                                {/* Flex columns of fixed-size cells. Grid auto-columns
+                                    stretch to fill leftover width; flex children at a
+                                    fixed size cannot. */}
+                                <div
+                                    className="flex"
+                                    style={{ gap: GAP, marginLeft: CELL + GAP }}
+                                >
+                                    {labels.map((label, i) => (
+                                        <div
+                                            key={i}
+                                            className="text-[10px] leading-none"
+                                            style={{
+                                                width: CELL,
+                                                color: "var(--text-muted)",
+                                            }}
+                                        >
+                                            {label && (
+                                                <span className="relative -left-px whitespace-nowrap">
+                                                    {label}
+                                                </span>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-2 flex" style={{ gap: GAP }}>
+                                    <div
+                                        className="flex flex-col text-[10px] leading-none"
+                                        style={{ gap: GAP, color: "var(--text-muted)" }}
+                                        aria-hidden
+                                    >
+                                        {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
+                                            <span
+                                                key={i}
+                                                className="flex items-center"
+                                                style={{ height: CELL, width: CELL }}
+                                            >
+                                                {d}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {weeks.map((week, wi) => (
+                                        <div
+                                            key={wi}
+                                            className="flex flex-col"
+                                            style={{ gap: GAP }}
+                                        >
+                                            {week.map((d, di) =>
+                                                d ? (
+                                                    <div
+                                                        key={d.date}
+                                                        className="rounded-[3px]"
+                                                        title={`${d.count} contribution${d.count === 1 ? "" : "s"} on ${d.date}`}
+                                                        style={{
+                                                            height: CELL,
+                                                            width: CELL,
+                                                            background: LEVEL_TOKENS[d.level],
+                                                            border:
+                                                                d.level === 0
+                                                                    ? "1px solid var(--glass-border)"
+                                                                    : "none",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <div
+                                                        key={`${wi}-${di}`}
+                                                        style={{ height: CELL, width: CELL }}
+                                                    />
+                                                )
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div
+                                    className="mt-3 flex items-center justify-end gap-1.5 text-[10px]"
+                                    style={{ color: "var(--text-muted)" }}
+                                >
+                                    <span>Less</span>
+                                    {LEVEL_TOKENS.map((tok, i) => (
+                                        <span
+                                            key={i}
+                                            className="rounded-[3px]"
+                                            style={{
+                                                height: 10,
+                                                width: 10,
+                                                background: tok,
+                                                border:
+                                                    i === 0
+                                                        ? "1px solid var(--glass-border)"
+                                                        : "none",
+                                            }}
+                                        />
+                                    ))}
+                                    <span>More</span>
+                                </div>
+                            </div>
                         </div>
                     </GlassCard>
                 </div>
