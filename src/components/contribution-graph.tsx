@@ -58,7 +58,7 @@ export function ContributionGraph({ gh }: { gh: GitHubStats | null }) {
                                     style={{ color: "var(--color-1)" }}
                                 >
                                     <span className="tabular-nums">{contributions}</span>{" "}
-                                    contributions in the last year
+                                    contributions in the last 90 days
                                 </h3>
                                 <p
                                     className="mt-1 text-sm"

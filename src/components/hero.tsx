@@ -18,7 +18,7 @@ export function Hero({ gh }: { gh: GitHubStats | null }) {
         ? [
             { value: String(projects.length), label: "Shipped projects" },
             { value: String(gh.repos), label: "Public repos" },
-            { value: String(gh.contributions), label: "Contributions, 1y" },
+            { value: String(gh.contributions), label: "Contributions, 90d" },
             { value: site.education.schoolShort, label: "B.Sc. CSE" },
         ]
         : site.stats.map((s) => ({

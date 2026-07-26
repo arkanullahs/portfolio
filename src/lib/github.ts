@@ -25,12 +25,14 @@ export type GitHubStats = {
     repos: number;
     stars: number;
     contributions: number;
-    /** Oldest → newest, exactly one year. */
+    /** Oldest → newest, last 3 months. */
     days: ContributionDay[];
 };
 
+const WINDOW_DAYS = 90;
+
 const QUERY = /* GraphQL */ `
-  query ($login: String!) {
+  query ($login: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $login) {
       repositories(
         privacy: PUBLIC
@@ -44,7 +46,7 @@ const QUERY = /* GraphQL */ `
           stargazerCount
         }
       }
-      contributionsCollection {
+      contributionsCollection(from: $from, to: $to) {
         contributionCalendar {
           totalContributions
           weeks {
@@ -84,6 +86,9 @@ export async function getGitHubStats(login: string): Promise<GitHubStats | null>
     const token = process.env.GITHUB_TOKEN;
     if (!token) return null;
 
+    const to = new Date();
+    const from = new Date(to.getTime() - WINDOW_DAYS * 86_400_000);
+
     try {
         const res = await fetch("https://api.github.com/graphql", {
             method: "POST",
@@ -91,7 +96,10 @@ export async function getGitHubStats(login: string): Promise<GitHubStats | null>
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ query: QUERY, variables: { login } }),
+            body: JSON.stringify({
+                query: QUERY,
+                variables: { login, from: from.toISOString(), to: to.toISOString() },
+            }),
             next: { revalidate: 86_400 },
         });
 
