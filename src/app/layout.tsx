@@ -20,6 +20,10 @@ export const metadata: Metadata = {
         template: `%s | ${site.name}`,
     },
     description: site.tagline,
+    icons: {
+        icon: "/favicon.svg",
+        apple: "/favicon.svg",
+    },
     metadataBase: new URL("https://arkanullah.pro.bd"),
     keywords: [
         "Arkanullah Saad",

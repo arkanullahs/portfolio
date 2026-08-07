@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
@@ -64,21 +63,12 @@ export function Nav() {
             >
                 <Link
                     href="#top"
-                    className="ml-2 flex shrink-0 cursor-pointer items-center gap-2 text-sm font-semibold tracking-tight text-[var(--color-1)]"
+                    className="ml-2 flex shrink-0 cursor-pointer items-baseline gap-1.5 text-sm font-semibold tracking-tight text-[var(--color-1)]"
                 >
-                    <Image
-                        src="/favicon.svg"
-                        alt="Logo"
-                        width={24}
-                        height={24}
-                        className="rounded-md"
-                    />
-                    <div className="flex items-baseline gap-1.5">
-                        <span>Arkanullah</span>
-                        <span className="font-normal hidden sm:inline-block" style={{ color: "var(--text-muted)" }}>
-                            Saad
-                        </span>
-                    </div>
+                    <span>Arkanullah</span>
+                    <span className="font-normal" style={{ color: "var(--text-muted)" }}>
+                        Saad
+                    </span>
                 </Link>
 
                 <ul
