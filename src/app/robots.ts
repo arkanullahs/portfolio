@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://arkanullah.dev/sitemap.xml',
+    sitemap: 'https://arkanullah.pro.bd/sitemap.xml',
   }
 }

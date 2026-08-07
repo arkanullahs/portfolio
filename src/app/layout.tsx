@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         template: `%s | ${site.name}`,
     },
     description: site.tagline,
-    metadataBase: new URL("https://arkanullah.dev"),
+    metadataBase: new URL("https://arkanullah.pro.bd"),
     keywords: [
         "Arkanullah Saad",
         "Full-stack engineer",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         "Dhaka",
         "Bangladesh",
     ],
-    authors: [{ name: site.name, url: "https://arkanullah.dev" }],
+    authors: [{ name: site.name, url: "https://arkanullah.pro.bd" }],
     creator: site.name,
     publisher: site.name,
     alternates: {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: `${site.name} — ${site.role}`,
         description: site.tagline,
-        url: "https://arkanullah.dev",
+        url: "https://arkanullah.pro.bd",
         siteName: site.name,
         locale: "en_US",
         type: "website",
@@ -111,7 +111,7 @@ export default function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "Person",
                             name: site.name,
-                            url: "https://arkanullah.dev",
+                            url: "https://arkanullah.pro.bd",
                             sameAs: [
                                 site.social.github,
                                 site.social.linkedin,
