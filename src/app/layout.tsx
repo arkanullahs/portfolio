@@ -15,13 +15,57 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: `${site.name} — ${site.role}`,
+    title: {
+        default: `${site.name} — ${site.role}`,
+        template: `%s | ${site.name}`,
+    },
     description: site.tagline,
     metadataBase: new URL("https://arkanullah.dev"),
+    keywords: [
+        "Arkanullah Saad",
+        "Full-stack engineer",
+        "AI engineer",
+        "Software Developer",
+        "Next.js",
+        "React",
+        "Dhaka",
+        "Bangladesh",
+    ],
+    authors: [{ name: site.name, url: "https://arkanullah.dev" }],
+    creator: site.name,
+    publisher: site.name,
+    alternates: {
+        canonical: "/",
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
     openGraph: {
         title: `${site.name} — ${site.role}`,
         description: site.tagline,
+        url: "https://arkanullah.dev",
+        siteName: site.name,
+        locale: "en_US",
         type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `${site.name} — ${site.role}`,
+        description: site.tagline,
+    },
+    other: {
+        "geo.region": "BD",
+        "geo.placename": "Dhaka",
+        "geo.position": "23.8103;90.4125",
+        "ICBM": "23.8103, 90.4125",
     },
 };
 
@@ -59,6 +103,28 @@ export default function RootLayout({
                 <script
                     dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }}
                     suppressHydrationWarning
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Person",
+                            name: site.name,
+                            url: "https://arkanullah.dev",
+                            sameAs: [
+                                site.social.github,
+                                site.social.linkedin,
+                                site.social.facebook,
+                            ],
+                            jobTitle: "Software Engineer",
+                            address: {
+                                "@type": "PostalAddress",
+                                addressLocality: "Dhaka",
+                                addressCountry: "BD",
+                            },
+                        }),
+                    }}
                 />
             </head>
             <body className="font-sans antialiased" suppressHydrationWarning>

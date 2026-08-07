@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { flagship } from "@/config/projects";
-import { GlassCard } from "@/components/liquid-glass/glass-card";
+
 import { SectionHeading } from "@/components/section-heading";
 import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
