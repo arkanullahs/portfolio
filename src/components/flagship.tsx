@@ -2,27 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { flagship } from "@/config/projects";
 
 import { SectionHeading } from "@/components/section-heading";
 import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 /**
- * BhaloPhone's own brand blue, hard-coded on purpose. The card is a window
- * into another product, so it keeps that product's colours in both site
- * themes instead of being repainted by the palette.
- *
- * The bright radial sits top-right, behind the icon column — the copy on the
- * left stays over the deep blue, where white text clears WCAG AA (5.5:1).
- * Moving that highlight left would quietly break the contrast.
+ * BhaloPhone's dark theme colors
  */
-const BRAND_BG = [
-    "radial-gradient(100% 130% at 84% 15%, #3771f3 0%, rgba(55,113,243,0) 60%)",
-    "radial-gradient(95% 130% at 2% 112%, #0b1832 0%, rgba(11,24,50,0) 58%)",
-    "radial-gradient(70% 90% at 100% 110%, #101f42 0%, rgba(16,31,66,0) 55%)",
-    "linear-gradient(120deg, #1e4bcd 0%, #1a3fae 100%)",
-].join(", ");
+const BRAND_BG = "#151817";
+const BRAND_MINT = "#a6c7c0";
 
 export function Flagship() {
     const revealRef = useScrollReveal();
@@ -170,30 +160,34 @@ function BhaloPhoneCard({ href }: { href: string }) {
             target="_blank"
             rel="noreferrer"
             aria-label="Open BhaloPhone — find your perfect phone"
-            className="lift group block overflow-hidden rounded-[24px]"
+            className="lift group block overflow-hidden rounded-none border sm:rounded-md"
             style={{
                 background: BRAND_BG,
-                boxShadow: "0 30px 60px -24px rgba(16,31,66,0.55)",
+                borderColor: "rgba(255,255,255,0.05)",
+                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)",
             }}
         >
-            <div className="flex items-center gap-5 p-6 sm:gap-7 sm:p-8">
+            <div className="flex items-center gap-5 p-6 sm:gap-7 sm:p-10">
                 <div className="min-w-0 flex-1">
-                    <h3 className="text-[clamp(1.35rem,3.2vw,1.9rem)] font-bold leading-[1.15] tracking-tight text-white">
-                        Find <span className="font-serif font-medium italic">your</span>{" "}
-                        perfect phone
+                    <h3 className="text-[clamp(1.5rem,3.5vw,2.4rem)] font-bold leading-[1.1] tracking-tight text-white">
+                        Find <span className="font-serif font-medium italic" style={{ color: BRAND_MINT }}>your</span> perfect
+                        <br />
+                        phone
                     </h3>
-                    <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">
+                    <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#a1a1aa]">
                         Answer a few quick questions and our AI picks the best phone for
                         how you actually use it, ranked from live Bangladesh prices.
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#132247] shadow-sm transition-transform duration-300 group-hover:translate-x-0.5">
-                        Get my pick
-                        <ArrowRight className="h-4 w-4" aria-hidden />
+                    <span 
+                        className="mt-8 inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold text-[#151817] shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
+                        style={{ backgroundColor: BRAND_MINT }}
+                    >
+                        Get my pick &rarr;
                     </span>
                 </div>
 
                 <div
-                    className="hidden w-px self-stretch bg-white/15 sm:block"
+                    className="hidden w-px self-stretch bg-white/10 sm:block"
                     aria-hidden
                 />
 
@@ -201,19 +195,15 @@ function BhaloPhoneCard({ href }: { href: string }) {
                     <Image
                         src="/bhalophone-icon.png"
                         alt=""
-                        width={64}
-                        height={64}
-                        className="rounded-2xl bg-white shadow-lg"
+                        width={76}
+                        height={76}
+                        className="drop-shadow-lg"
                     />
-                    <div className="mt-4 text-lg font-semibold tracking-tight text-white">
-                        bhalophone
+                    <div className="mt-5 text-[22px] font-bold tracking-tight text-white">
+                        Bhalo Phone
                     </div>
-                    {/* Solid white, not white/70 — this column sits over the
-                        bright part of the gradient, where any alpha on 12px
-                        text drops under 4.5:1. Weight carries the hierarchy
-                        instead of opacity. */}
-                    <p className="mt-1 text-xs font-light leading-snug text-white">
-                        AI-powered phone recommendations for Bangladesh
+                    <p className="mt-2 text-[13px] font-light leading-relaxed text-[#6b7280]">
+                        AI-powered phone<br />recommendations for<br />Bangladesh
                     </p>
                 </div>
             </div>
