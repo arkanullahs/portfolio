@@ -71,6 +71,25 @@ export const projects: Project[] = [
         featured: true,
     },
     {
+        id: "rocksolid",
+        title: "RockSolid Router Firmware",
+        blurb: "Open-source Linux firmware for a 4 MB TP-Link router that OpenWrt doesn't ship.",
+        description:
+            "OpenWrt publishes no image for the TP-Link TL-WR841N v14: the default build doesn't fit its 4 MB of flash. I configured and cross-compiled the Linux kernel and OpenWrt from source, cut both down until the system and a web UI fit, and tuned the router as an access point for a crowded 2.4 GHz neighbourhood. Running on real hardware and released under GPL-2.0.",
+        highlights: [
+            "Cross-compiled Linux 6.6 and OpenWrt 24.10.8 for a MIPS SoC (MediaTek MT7628) in a reproducible Docker build.",
+            "Cut kernel options (IPv6, PCI, debug symbols, cgroups, namespaces) and userland packages to fit the 3.97 MB image limit, leaving 256 KB for settings.",
+            "Wrote first-boot scripts that bridge all five ports in the hardware switch and tune 2.4 GHz WiFi: 20 MHz channels, auto channel from 1/6/11, no 802.11b rates.",
+            "Restyled the LuCI admin interface with 20 KB of CSS, light and dark, desktop and phone.",
+        ],
+        stack: ["Linux kernel", "OpenWrt", "Embedded Linux", "Docker", "Shell", "CSS"],
+        href: "https://github.com/arkanullahs/tl-wr841n-v14-rocksolid",
+        emoji: "RS",
+        cover: "browser",
+        badge: "Open source · Embedded Linux",
+        featured: true,
+    },
+    {
         id: "nexted",
         title: "NextEd",
         blurb: "A course platform I built on my own.",

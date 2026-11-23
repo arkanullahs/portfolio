@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, FileText, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { site } from "@/config/site";
 import { projects, flagship } from "@/config/projects";
 import { GlassButton } from "@/components/liquid-glass/glass-button";
@@ -67,6 +67,12 @@ export function Hero({ gh }: { gh: GitHubStats | null }) {
                                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                                 aria-hidden
                             />
+                        </GlassButton>
+                        <GlassButton variant="ghost" asChild>
+                            <a href={site.cv} target="_blank" rel="noreferrer">
+                                <FileText className="h-4 w-4" aria-hidden />
+                                View CV
+                            </a>
                         </GlassButton>
                         <GlassButton variant="ghost" asChild>
                             <Link href="#flagship">See BhaloPhone</Link>

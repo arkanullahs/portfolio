@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { GlassButton } from "@/components/liquid-glass/glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useContactModal } from "@/components/contact-modal";
+import { site } from "@/config/site";
 
 const items = [
     { id: "flagship", label: "BhaloPhone" },
@@ -127,6 +128,11 @@ export function Nav() {
 
                 <div className="flex shrink-0 items-center gap-2">
                     <ThemeToggle />
+                    <GlassButton size="sm" variant="ghost" asChild>
+                        <a href={site.cv} download="Arkanullah-Saad-CV.pdf">
+                            CV
+                        </a>
+                    </GlassButton>
                     <GlassButton size="sm" variant="ghost" onClick={open}>
                         Contact
                     </GlassButton>

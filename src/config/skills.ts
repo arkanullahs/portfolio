@@ -51,6 +51,8 @@ export const skills: Skill[] = [
     { name: "Firebase", group: "Data" },
     { name: "MySQL", group: "Data" },
 
+    { name: "Docker", group: "Infra" },
+    { name: "Linux / OpenWrt", group: "Infra" },
     { name: "GitHub Actions", group: "Infra" },
     { name: "Render", group: "Infra" },
     { name: "Vercel", group: "Infra" },
