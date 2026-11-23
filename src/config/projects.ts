@@ -174,24 +174,6 @@ export const projects: Project[] = [
         badge: "MERN · Solo",
         featured: true,
     },
-    {
-        id: "ecrunchies",
-        year: "2023",
-        title: "eCrunchies",
-        blurb: "A food delivery app for phones.",
-        description:
-            "Find restaurants, chat with them in real time, fill a cart, get push notifications, and track an order. Restaurants get a simple dashboard too.",
-        highlights: [
-            "One Flutter codebase running on both Android and iOS.",
-            "Used Firebase for auth, Firestore for data, and FCM for push.",
-            "Designed how an order moves from cart to delivered.",
-        ],
-        stack: ["Flutter", "Firebase", "Firestore", "FCM"],
-        href: "https://github.com/arkanullahs/eCrunchies",
-        emoji: "eC",
-        cover: "mobile",
-        badge: "Mobile",
-    },
 ];
 
 export const flagship = projects.find((p) => p.flagship);
