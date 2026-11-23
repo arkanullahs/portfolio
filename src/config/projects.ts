@@ -149,24 +149,6 @@ export const projects: Project[] = [
         },
     },
     {
-        id: "booknest",
-        year: "2025",
-        title: "BookNest",
-        blurb: "A book marketplace with reviews.",
-        description:
-            "Browse books, get recommendations, read what other people thought, and check out. A Laravel API behind a React frontend.",
-        highlights: [
-            "Laravel API covering auth, cart, orders and reviews.",
-            "React + TypeScript frontend with Tailwind.",
-            "Designed the MySQL schema for books, reviews and orders.",
-        ],
-        stack: ["Laravel", "React", "MySQL"],
-        href: "https://github.com/arkanullahs/BookNest",
-        emoji: "BN",
-        cover: "browser",
-        badge: "Full-stack",
-    },
-    {
         id: "nexted",
         year: "2024",
         title: "NextEd",
