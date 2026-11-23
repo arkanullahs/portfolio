@@ -69,9 +69,9 @@ export function Hero({ gh }: { gh: GitHubStats | null }) {
                             />
                         </GlassButton>
                         <GlassButton variant="ghost" asChild>
-                            <a href={site.cv} target="_blank" rel="noreferrer">
+                            <a href={site.cv} download="Arkanullah-Saad-CV.pdf">
                                 <FileText className="h-4 w-4" aria-hidden />
-                                View CV
+                                Download CV
                             </a>
                         </GlassButton>
                         <GlassButton variant="ghost" asChild>

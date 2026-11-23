@@ -11,8 +11,6 @@ import { useScrollReveal } from "@/lib/use-scroll-reveal";
 /**
  * BhaloPhone's dark theme colors
  */
-const BRAND_BG = "#151817";
-const BRAND_MINT = "#a6c7c0";
 
 export function Flagship() {
     const revealRef = useScrollReveal();
@@ -34,7 +32,7 @@ export function Flagship() {
                 <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
                     {/* ── Live product card + metrics ─────────────────── */}
                     <div className="scroll-reveal lg:col-span-6 lg:order-2">
-                        <BhaloPhoneCard href={p.live ?? "https://bhalophone.com"} />
+                        <LiveSiteShowcase href={p.live ?? "https://bhalophone.com"} />
 
                         {p.metrics && (
                             <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border sm:grid-cols-4"
@@ -150,63 +148,72 @@ export function Flagship() {
 }
 
 /**
- * BhaloPhone's own "Find your perfect phone" CTA, rebuilt in this codebase's
- * primitives. Links straight into the live product.
+ * The live site as it looks on a laptop and a phone. Screenshots of
+ * bhalophone.com, linked straight to it.
  */
-function BhaloPhoneCard({ href }: { href: string }) {
+function LiveSiteShowcase({ href }: { href: string }) {
     return (
-        <Link
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Open BhaloPhone — find your perfect phone"
-            className="lift group block overflow-hidden rounded-none border sm:rounded-md"
-            style={{
-                background: BRAND_BG,
-                borderColor: "rgba(255,255,255,0.05)",
-                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)",
-            }}
-        >
-            <div className="flex items-center gap-5 p-6 sm:gap-7 sm:p-10">
-                <div className="min-w-0 flex-1">
-                    <h3 className="text-[clamp(1.5rem,3.5vw,2.4rem)] font-bold leading-[1.1] tracking-tight text-white">
-                        Find <span className="font-serif font-medium italic" style={{ color: BRAND_MINT }}>your</span> perfect
-                        <br />
-                        phone
-                    </h3>
-                    <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#a1a1aa]">
-                        Answer a few quick questions and our AI picks the best phone for
-                        how you actually use it, ranked from live Bangladesh prices.
-                    </p>
-                    <span 
-                        className="mt-8 inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold text-[#151817] shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
-                        style={{ backgroundColor: BRAND_MINT }}
-                    >
-                        Get my pick &rarr;
-                    </span>
-                </div>
-
+        <figure>
+            <Link
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open bhalophone.com"
+                className="group relative block pb-10 sm:pb-14"
+            >
+                {/* Laptop: browser window */}
                 <div
-                    className="hidden w-px self-stretch bg-white/10 sm:block"
-                    aria-hidden
-                />
-
-                <div className="hidden w-[32%] shrink-0 flex-col items-center text-center sm:flex">
-                    <Image
-                        src="/bhalophone-icon.png"
-                        alt=""
-                        width={76}
-                        height={76}
-                        className="drop-shadow-lg"
-                    />
-                    <div className="mt-5 text-[22px] font-bold tracking-tight text-white">
-                        Bhalo Phone
+                    className="overflow-hidden rounded-xl border transition-transform duration-500 ease-out group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+                    style={{
+                        borderColor: "var(--glass-border)",
+                        background: "var(--background)",
+                        boxShadow: "0 24px 48px -16px rgba(0,0,0,0.45)",
+                    }}
+                >
+                    <div
+                        className="flex items-center gap-1.5 border-b px-3 py-2"
+                        style={{ borderColor: "var(--glass-border)", background: "var(--soft-fill)" }}
+                        aria-hidden
+                    >
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                        <span
+                            className="mx-auto rounded-md px-3 py-0.5 text-[11px]"
+                            style={{ background: "var(--background)", color: "var(--text-muted)" }}
+                        >
+                            bhalophone.com
+                        </span>
+                        <span className="w-[42px]" />
                     </div>
-                    <p className="mt-2 text-[13px] font-light leading-relaxed text-[#6b7280]">
-                        AI-powered phone<br />recommendations for<br />Bangladesh
-                    </p>
+                    <Image
+                        src="/shots/bhalophone-desktop.png"
+                        alt="bhalophone.com home page on a laptop: best phone by budget, prices checked daily"
+                        width={1440}
+                        height={900}
+                        sizes="(min-width: 1024px) 560px, 100vw"
+                        className="block h-auto w-full"
+                    />
                 </div>
-            </div>
-        </Link>
+
+                {/* Phone */}
+                <div
+                    className="absolute bottom-0 right-3 w-[26%] min-w-[96px] max-w-[150px] overflow-hidden rounded-[22px] border-[5px] border-[#111] transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:right-[-10px]"
+                    style={{ boxShadow: "0 24px 40px -12px rgba(0,0,0,0.55)" }}
+                >
+                    <Image
+                        src="/shots/bhalophone-mobile.png"
+                        alt="bhalophone.com on a phone"
+                        width={390}
+                        height={844}
+                        sizes="150px"
+                        className="block h-auto w-full"
+                    />
+                </div>
+            </Link>
+            <figcaption className="mt-3 text-xs" style={{ color: "var(--text-muted)" }}>
+                The live site on desktop and mobile, captured November 2026.
+            </figcaption>
+        </figure>
     );
 }
