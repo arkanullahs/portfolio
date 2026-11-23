@@ -10,23 +10,23 @@ export const site = {
     firstName: "Arkanullah",
 
     /* Headline that reads well to recruiters scanning quickly */
-    role: "Final-year CSE student · Full-stack & AI engineering",
+    role: "Software engineer · CSE graduate · Full-stack, AI & Linux",
 
     /* Sits in the hero status pill, next to the live dot */
-    seeking: "Open to software engineering roles",
+    seeking: "Open to full-time software engineering roles",
 
     /* Tagline — humanized: no em dash, no clichés, has a point of view */
     tagline:
-        "Final-year Computer Science student in Dhaka. I built BhaloPhone, an AI phone recommendation platform that's live and answering real buying questions across Bangladesh, plus open-source Linux firmware for a TP-Link router and three more apps across MERN, Flutter and Laravel.",
+        "Computer Science graduate in Dhaka. I built BhaloPhone, an AI phone recommendation platform that's live and answering real buying questions across Bangladesh, plus open-source Linux firmware for a TP-Link router and three more apps across MERN, Flutter and Laravel.",
 
-    /* About — first person, varied rhythm, owns the student status */
+    /* About — first person, varied rhythm */
     about: [
-        "I'm in my final year of Computer Science at Ahsanullah University of Science and Technology. I got into code because I kept wanting apps that didn't exist yet, so I started building them. That habit never really wore off.",
+        "I graduated in Computer Science from Ahsanullah University of Science and Technology in 2026. I got into code because I kept wanting apps that didn't exist yet, so I started building them. That habit never really wore off.",
         "BhaloPhone is the clearest example. Buying a phone here means opening eight retailer tabs and guessing, so I built the thing that reads all eight for you: scrapers, a RAG pipeline over real listings, an inference layer that survives free-tier rate limits, and the deploy pipeline underneath it. Founder, backend, frontend and ops, because there was nobody else.",
         "Before that: NextEd, eCrunchies and BookNest, across MERN, Flutter with Firebase, and Laravel. All went from an empty repo to something that works, either solo or with a classmate or two.",
         "Outside the web stack I built RockSolid, open-source firmware for the TP-Link TL-WR841N v14. OpenWrt ships no image for it because the router has only 4 MB of flash, so I configured and cross-compiled the Linux kernel and OpenWrt from source, cut both down until they fit, and tuned the WiFi for a crowded neighbourhood. It runs on a real router and the source is on GitHub.",
         "I also edit educational videos for Ascend IELTS. Sounds unrelated to code, but it taught me a lot about pacing and the small details that make something feel finished instead of rushed.",
-        "Right now I'm looking for my first real software job. I'm not going to pretend I know everything. What I can promise is that I pick things up fast, I ask good questions, and I finish what I start.",
+        "I'm looking for a full-time software engineering role. I pick things up fast, I ask good questions, and I finish what I start.",
     ] as const,
 
     location: "Dhaka, Bangladesh",
@@ -82,7 +82,7 @@ export const site = {
         school: "Ahsanullah University of Science and Technology",
         schoolShort: "AUST",
         degree: "B.Sc. in Computer Science & Engineering",
-        period: "Expected 2026",
+        period: "2026",
         location: "Dhaka, Bangladesh",
     },
 } as const;

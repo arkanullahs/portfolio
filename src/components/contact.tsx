@@ -35,9 +35,8 @@ export function Contact() {
                                 Got a role that fits? <span className="text-accent">Reach out.</span>
                             </h2>
                             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)]">
-                                I&apos;m looking for my first software job, whether that&apos;s
-                                a full role, an internship, or contract work. Pick whatever
-                                channel works for you. I reply fast.
+                                I&apos;m looking for a full-time software engineering role.
+                                Pick whatever channel works for you. I reply fast.
                             </p>
                             <div className="mt-8 flex flex-col items-center gap-3">
                                 <GlassButton size="lg" className="group w-full max-w-xs !justify-center" onClick={open}>

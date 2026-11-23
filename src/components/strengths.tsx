@@ -23,7 +23,7 @@ export function Strengths() {
                 <SectionHeading
                     eyebrow="Why hire me"
                     title="What you'd actually get."
-                    description="I'm still a student, but I've shipped real apps from start to finish. Here's what that looks like in practice."
+                    description="I've shipped real systems from start to finish. Here's what that looks like in practice."
                 />
 
                 <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
