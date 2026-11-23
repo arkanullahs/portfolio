@@ -22,7 +22,7 @@ export const site = {
     /* About — first person, varied rhythm */
     about: [
         "I graduated in Computer Science from Ahsanullah University of Science and Technology in 2026. I got into code because I kept wanting apps that didn't exist yet, so I started building them. That habit never really wore off.",
-        "BhaloPhone is the clearest example. Buying a phone here means opening eight retailer tabs and guessing, so I built the thing that reads all eight for you: scrapers, a RAG pipeline over real listings, an inference layer that survives free-tier rate limits, and the deploy pipeline underneath it. Founder, backend, frontend and ops, because there was nobody else.",
+        "BhaloPhone is the clearest example. Buying a phone here means opening a dozen shop tabs and guessing, so I built the thing that reads 17 shops for you: scrapers, a RAG pipeline over real listings, an LLM layer that survives free-tier limits, and a content pipeline that posts prices and reels every day. When the managed database cut us off, I moved the backend onto two old phones at home. Founder, backend, frontend and ops, because there was nobody else.",
         "Before that: NextEd, eCrunchies and BookNest, across MERN, Flutter with Firebase, and Laravel. All went from an empty repo to something that works, either solo or with a classmate or two.",
         "Outside the web stack I built RockSolid, open-source firmware for the TP-Link TL-WR841N v14. OpenWrt ships no image for it because the router has only 4 MB of flash, so I configured and cross-compiled the Linux kernel and OpenWrt from source, cut both down until they fit, and tuned the WiFi for a crowded neighbourhood. It runs on a real router and the source is on GitHub.",
         "I also edit educational videos for Ascend IELTS. Sounds unrelated to code, but it taught me a lot about pacing and the small details that make something feel finished instead of rushed.",
@@ -69,11 +69,11 @@ export const site = {
         },
         {
             title: "I design for things going wrong",
-            body: "Free-tier infrastructure fails constantly. Circuit breakers, provider rotation and key failover weren't resume padding, they were the only way to keep BhaloPhone answering.",
+            body: "When the managed database cut BhaloPhone off, I moved PostgreSQL and the API onto a broken Walton H9 Pro phone behind a rate-limited Cloudflare Worker, with a screenless Redmi scraping from a Bangladeshi IP. Free-tier LLM limits got circuit breakers and key failover.",
         },
         {
-            title: "I'm easy to work with",
-            body: "Small commits, clear PRs, and I'm fine saying \"I don't know yet, give me a bit to figure it out\" instead of bluffing.",
+            title: "I use AI agents with guardrails",
+            body: "I build with Claude Code every day, and the agents work from written specs, repo rules and a knowledge base I maintain. Code goes through a branch and 60 automated checks before it lands. 325 merged pull requests on BhaloPhone went through that loop.",
         },
     ] as const,
 
