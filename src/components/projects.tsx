@@ -17,7 +17,7 @@ export function Projects() {
             <div ref={revealRef} className="container-x">
                 <SectionHeading
                     title="Other projects"
-                    description="Each one links to its source on GitHub."
+                    description="Newest first. Private repos have no link."
                 />
 
                 <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -27,41 +27,36 @@ export function Projects() {
                             className="scroll-reveal"
                             style={{ animationDelay: `${i * 120}ms` }}
                         >
-                            <Link
-                                href={p.href ?? p.live ?? "#"}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`${p.title} on GitHub`}
-                                className="block"
-                            >
+                            <CardLink href={p.href ?? p.live} label={`${p.title} on GitHub`}>
                                 <GlassCard className="lift group relative overflow-hidden p-0">
                                     {p.image && (
                                         <div
                                             className="overflow-hidden rounded-t-[23px] border-b"
                                             style={{ borderColor: "var(--glass-border)" }}
                                         >
-                                            <Image
-                                                src={p.image.src}
-                                                alt={p.image.alt}
-                                                width={p.image.width}
-                                                height={p.image.height}
-                                                sizes="(min-width: 768px) 560px, 100vw"
-                                                className="block h-auto w-full"
-                                            />
+                                            <div className="aspect-video">
+                                                <Image
+                                                    src={p.image.src}
+                                                    alt={p.image.alt}
+                                                    width={p.image.width}
+                                                    height={p.image.height}
+                                                    sizes="(min-width: 768px) 560px, 100vw"
+                                                    className="block h-full w-full object-cover object-left-top"
+                                                />
+                                            </div>
                                         </div>
                                     )}
 
                                     <div className="relative p-6 sm:p-7">
                                         <div className="flex items-start justify-between gap-4">
                                             <div>
-                                                {p.badge && (
-                                                    <div
-                                                        className="mb-1 text-xs"
-                                                        style={{ color: "var(--text-muted)" }}
-                                                    >
-                                                        {p.badge}
-                                                    </div>
-                                                )}
+                                                <div
+                                                    className="mb-1 text-xs"
+                                                    style={{ color: "var(--text-muted)" }}
+                                                >
+                                                    <span className="tabular-nums" style={{ color: "var(--color-2)" }}>{p.year}</span>
+                                                    {p.badge && <> · {p.badge}</>}
+                                                </div>
                                         <h3
                                             className="text-xl font-semibold tracking-tight"
                                             style={{ color: "var(--color-1)" }}
@@ -69,11 +64,11 @@ export function Projects() {
                                             {p.title}
                                         </h3>
                                             </div>
-                                            <ArrowUpRight
+                                            {(p.href || p.live) && <ArrowUpRight
                                                 className="mt-1 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                                                 style={{ color: "var(--text-muted)" }}
                                                 aria-hidden
-                                            />
+                                            />}
                                         </div>
                                         <p
                                             className="mt-1 text-sm"
@@ -134,11 +129,20 @@ export function Projects() {
                                         )}
                                     </div>
                                 </GlassCard>
-                            </Link>
+                            </CardLink>
                         </div>
                     ))}
                 </div>
             </div>
         </section>
+    );
+}
+
+function CardLink({ href, label, children }: { href?: string; label: string; children: React.ReactNode }) {
+    if (!href) return <div>{children}</div>;
+    return (
+        <Link href={href} target="_blank" rel="noreferrer" aria-label={label} className="block">
+            {children}
+        </Link>
     );
 }

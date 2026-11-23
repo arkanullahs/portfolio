@@ -11,6 +11,8 @@ export type Metric = { value: string; label: string };
 export type Project = {
     id: string;
     title: string;
+    /** When it was built, shown on the card. */
+    year: string;
     blurb: string;
     description: string;
     highlights: string[];
@@ -36,14 +38,15 @@ export type Project = {
 export const projects: Project[] = [
     {
         id: "bhalophone",
+        year: "2026 – present",
         title: "BhaloPhone",
         role: "Founder & Full-Stack Developer",
         blurb: "Live phone prices from 17 Bangladeshi shops, and the best phone for your budget.",
         description:
-            "Buying a phone in Bangladesh means opening a dozen shop tabs and trusting whichever one lies least. BhaloPhone tracks about 1,300 phones and 5,400 offers across 17 shops, refreshed nightly, and answers a plain question like \"best camera under 30k\" with ranked picks tied to real, current listings. It runs on hardware I self-host at home.",
+            "Buying a phone in Bangladesh means opening a dozen shop tabs and trusting whichever one lies least. BhaloPhone tracks about 1,300 phones and 5,400 offers across 17 shops, refreshed nightly, and answers a plain question like \"best camera under 30k\" with ranked picks tied to real, current listings. It runs on an old phone at my house.",
         highlights: [
             "Ranks picks with RAG over embeddings and structured evidence cards, so every spec comes from database rows the model cannot invent. The LLM layer spans 13 providers with circuit breakers and key failover.",
-            "When the managed database cut us off, I moved the backend onto repurposed phones: a broken Walton H9 Pro runs PostgreSQL 17, PostgREST, the job worker and the API behind a rate-limited Cloudflare Worker. A screenless Redmi 4A on LineageOS and Termux scrapes from a Bangladeshi residential IP. CI reaches both over Tailscale.",
+            "When the managed database cut us off, I turned a broken Walton H9 Pro into the server: rooted Android running a Debian chroot with PostgreSQL 17, PostgREST, the API, the job worker, reel rendering and a Telegram bot for operations. It sits behind a rate-limited Cloudflare Worker, crawls from a Bangladeshi home IP with a SIM-data proxy as a second exit, and CI reaches it over Tailscale.",
             "Built an automated content pipeline: 8 Facebook price posts and 5 rendered best-price reels a day, cross-posted to Instagram and YouTube Shorts.",
             "946 indexed pages (phone, best-of and versus pages) and a monthly price report, generated from the same data.",
             "325 merged pull requests and 70 automated checks, 60 of them run in CI on every push. I write a design spec before a feature, and the AI coding agents I use work from repo rules and a knowledge base I maintain.",
@@ -75,6 +78,7 @@ export const projects: Project[] = [
     },
     {
         id: "rocksolid",
+        year: "2026",
         title: "RockSolid Router Firmware",
         blurb: "Open-source Linux firmware for a 4 MB TP-Link router that OpenWrt doesn't ship.",
         description:
@@ -91,7 +95,7 @@ export const projects: Project[] = [
             src: "/shots/rocksolid.png",
             alt: "RockSolid sign-in page in the router's web interface",
             width: 1280,
-            height: 480,
+            height: 720,
         },
         emoji: "RS",
         cover: "browser",
@@ -99,7 +103,72 @@ export const projects: Project[] = [
         featured: true,
     },
     {
+        id: "norfleet",
+        year: "2026",
+        title: "norFleet for Altan Transport",
+        blurb: "Shift and fuel records for a haulage business in Norway. Freelance client work.",
+        description:
+            "Drivers record shifts, breaks and fuel from their phones. The owner reviews each driver's month, approves it and exports the figures for the accountant. Times follow Europe/Oslo and money is in NOK.",
+        highlights: [
+            "Overtime rules with an adjustable daily threshold and dated rates; approved months stay locked.",
+            "One Cloudflare Worker serving the React app and a D1 database, built to fit the free plan's 10 ms CPU limit.",
+            "Full business backups encrypted in the admin's browser, with a verified replace-and-restore flow.",
+        ],
+        stack: ["React", "TypeScript", "Cloudflare Workers", "D1", "Vite"],
+        emoji: "NF",
+        cover: "browser",
+        badge: "Client work · Private repo",
+        image: {
+            src: "/shots/norfleet.png",
+            alt: "norFleet admin overview on desktop and the driver app on a phone, with demo data",
+            width: 1280,
+            height: 720,
+        },
+    },
+    {
+        id: "ascend-tracker",
+        year: "2026",
+        title: "Ascend Performance Tracker",
+        blurb: "Learner progress tracking for Ascend IELTS.",
+        description:
+            "A private tracker for up to 100 active learners. Instructors score learners and keep the final say over calculated suggestions; learners see their progress, a leaderboard and a speaking test page.",
+        highlights: [
+            "A Discord bot reads learners' daily task posts and marks each day done or half done.",
+            "React and TypeScript on Cloudflare Workers, with D1 migrations.",
+            "Domain, Worker and D1 tests in Vitest; browser flows in Playwright.",
+        ],
+        stack: ["React", "TypeScript", "Cloudflare Workers", "D1", "Discord API", "Vitest"],
+        emoji: "AT",
+        cover: "browser",
+        badge: "Built as CTO of Ascend IELTS · Private repo",
+        image: {
+            src: "/shots/ascend.png",
+            alt: "Ascend instructor overview on desktop and the learner view on a phone, with demo data",
+            width: 1280,
+            height: 720,
+        },
+    },
+    {
+        id: "booknest",
+        year: "2025",
+        title: "BookNest",
+        blurb: "A book marketplace with reviews.",
+        description:
+            "Browse books, get recommendations, read what other people thought, and check out. A Laravel API behind a React frontend.",
+        highlights: [
+            "Laravel API covering auth, cart, orders and reviews.",
+            "React + TypeScript frontend with Tailwind.",
+            "Designed the MySQL schema for books, reviews and orders.",
+        ],
+        stack: ["Laravel", "React", "MySQL"],
+        href: "https://github.com/arkanullahs/BookNest",
+        emoji: "BN",
+        cover: "browser",
+        badge: "Full-stack",
+    },
+    {
         id: "nexted",
+        year: "2024",
         title: "NextEd",
         blurb: "A course platform I built on my own.",
         description:
@@ -125,6 +194,7 @@ export const projects: Project[] = [
     },
     {
         id: "ecrunchies",
+        year: "2023",
         title: "eCrunchies",
         blurb: "A food delivery app for phones.",
         description:
@@ -139,23 +209,6 @@ export const projects: Project[] = [
         emoji: "eC",
         cover: "mobile",
         badge: "Mobile",
-    },
-    {
-        id: "booknest",
-        title: "BookNest",
-        blurb: "A book marketplace with reviews.",
-        description:
-            "Browse books, get recommendations, read what other people thought, and check out. A Laravel API behind a React frontend.",
-        highlights: [
-            "Laravel API covering auth, cart, orders and reviews.",
-            "React + TypeScript frontend with Tailwind.",
-            "Designed the MySQL schema for books, reviews and orders.",
-        ],
-        stack: ["Laravel", "React", "MySQL"],
-        href: "https://github.com/arkanullahs/BookNest",
-        emoji: "BN",
-        cover: "browser",
-        badge: "Full-stack",
     },
 ];
 

@@ -71,7 +71,7 @@ export function Flagship() {
                                 className="text-sm font-medium"
                                 style={{ color: "var(--accent-text)" }}
                             >
-                                {p.role}
+                                {p.role} · {p.year}
                             </div>
                         )}
 
@@ -195,22 +195,19 @@ function LiveSiteShowcase({ href }: { href: string }) {
                     />
                 </div>
 
-                {/* Phone */}
+                {/* Phone: real frame with the site composited into its screen */}
                 <div
-                    className="absolute bottom-0 right-3 w-[26%] min-w-[96px] max-w-[150px] rounded-[20px] bg-[#111] px-[4px] pb-[12px] pt-[12px] transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:right-[-10px]"
-                    style={{ boxShadow: "0 24px 40px -12px rgba(0,0,0,0.55)" }}
+                    className="absolute bottom-0 right-2 w-[28%] min-w-[104px] max-w-[176px] transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:right-[-14px]"
+                    style={{ filter: "drop-shadow(0 20px 28px rgba(0,0,0,0.5))" }}
                 >
-                    <span className="absolute left-1/2 top-[5px] h-[3px] w-[22%] -translate-x-1/2 rounded-full bg-[#2a2a2a]" aria-hidden />
-                    <div className="overflow-hidden rounded-[3px]">
                     <Image
-                        src="/shots/bhalophone-mobile.png"
+                        src="/shots/bhalophone-phone.png"
                         alt="bhalophone.com on a phone"
-                        width={390}
-                        height={844}
-                        sizes="150px"
+                        width={600}
+                        height={1234}
+                        sizes="176px"
                         className="block h-auto w-full"
                     />
-                    </div>
                 </div>
             </Link>
             <figcaption className="mt-3 text-xs" style={{ color: "var(--text-muted)" }}>

@@ -21,8 +21,11 @@ export const metadata: Metadata = {
     },
     description: site.tagline,
     icons: {
-        icon: "/favicon.svg",
-        apple: "/favicon.svg",
+        icon: [
+            { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+            { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        ],
+        apple: "/apple-icon.png",
     },
     metadataBase: new URL("https://arkanullah.pro.bd"),
     keywords: [

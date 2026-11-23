@@ -17,15 +17,16 @@ export const site = {
 
     /* Hero lead and meta description */
     tagline:
-        "I build and run BhaloPhone, a phone price site that tracks 17 shops across Bangladesh, on two old phones in my house. I also wrote Linux firmware for a TP-Link router that OpenWrt doesn't support.",
+        "I built BhaloPhone, a phone price site that tracks 17 shops across Bangladesh, and I run it on an old Android phone that serves as its server. I also wrote Linux firmware for a TP-Link router that OpenWrt doesn't support.",
 
     /* About — first person, varied rhythm */
     about: [
         "I graduated in Computer Science from Ahsanullah University of Science and Technology in 2026. I started writing code to build apps I wanted and couldn't find.",
-        "BhaloPhone is the clearest example. Buying a phone here means opening a dozen shop tabs and guessing, so I built the thing that reads 17 shops for you: scrapers, a RAG pipeline over real listings, an LLM layer that survives free-tier limits, and a content pipeline that posts prices and reels every day. When the managed database cut us off, I moved the backend onto two old phones at home. Founder, backend, frontend and ops.",
-        "Before that: NextEd, eCrunchies and BookNest, across MERN, Flutter with Firebase, and Laravel. All went from an empty repo to something that works, either solo or with a classmate or two.",
+        "BhaloPhone is the clearest example. Buying a phone here means opening a dozen shop tabs and guessing, so I built the thing that reads 17 shops for you: scrapers, a RAG pipeline over real listings, an LLM layer that survives free-tier limits, and a content pipeline that posts prices and reels every day. When the managed database cut us off, I moved the whole backend onto an old Android phone at home. Founder, backend, frontend and ops.",
+        "Before that: eCrunchies (2023, Flutter and Firebase), NextEd (2024, MERN) and BookNest (2025, Laravel and React). Each went from an empty repo to something that works, solo or with a classmate or two.",
         "Outside the web stack I built RockSolid, open-source firmware for the TP-Link TL-WR841N v14. OpenWrt ships no image for it because the router has only 4 MB of flash, so I configured and cross-compiled the Linux kernel and OpenWrt from source, cut both down until they fit, and tuned the WiFi for a crowded neighbourhood. It runs on a real router and the source is on GitHub.",
-        "I also produce IELTS video lessons for Ascend IELTS, which taught me to care about pacing and small details.",
+        "In 2026 I also built norFleet as freelance client work: shift and fuel records for Altan Transport, a haulage business in Norway.",
+        "I'm CTO at Ascend IELTS, where I built the learner progress tracker and run video lesson production.",
         "I'm looking for a full-time software engineering role.",
     ] as const,
 
@@ -69,7 +70,7 @@ export const site = {
         },
         {
             title: "I design for things going wrong",
-            body: "When the managed database cut BhaloPhone off, I moved PostgreSQL and the API onto a broken Walton H9 Pro phone behind a rate-limited Cloudflare Worker, with a screenless Redmi scraping from a Bangladeshi IP. Free-tier LLM limits got circuit breakers and key failover.",
+            body: "When the managed database cut BhaloPhone off, I moved PostgreSQL, the API and every background job onto a broken Walton H9 Pro running Debian, behind a rate-limited Cloudflare Worker. It restarts its own services, reboots itself every 3.5 days and reports to me on Telegram.",
         },
         {
             title: "I use AI agents with guardrails",
