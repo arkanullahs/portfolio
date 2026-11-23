@@ -93,7 +93,7 @@ export const projects: Project[] = [
         href: "https://github.com/arkanullahs/tl-wr841n-v14-rocksolid",
         image: {
             src: "/shots/rocksolid.png",
-            alt: "RockSolid sign-in page in the router's web interface",
+            alt: "RockSolid sign-in page in the router's web interface, on desktop and on a phone",
             width: 1280,
             height: 720,
         },
@@ -165,9 +165,9 @@ export const projects: Project[] = [
         live: "https://nexted-frontend.vercel.app",
         image: {
             src: "/shots/nexted.png",
-            alt: "NextEd home page",
+            alt: "NextEd home page on desktop and on a phone",
             width: 1280,
-            height: 480,
+            height: 720,
         },
         emoji: "NE",
         cover: "browser",
