@@ -23,25 +23,22 @@ export function Contact() {
                                 "linear-gradient(135deg, color-mix(in oklch, var(--color-1) 7%, transparent) 0%, color-mix(in oklch, var(--color-1) 3%, transparent) 100%)",
                         }}
                     >
-                        <div className="pointer-events-none absolute -left-32 -top-32 h-72 w-72 rounded-full blur-3xl bg-[var(--accent-tint-mid)]" />
-                        <div className="pointer-events-none absolute -right-24 -bottom-24 h-72 w-72 rounded-full blur-3xl bg-[var(--orb-2)]" />
 
                         <div className="relative mx-auto max-w-2xl text-center">
-                            <div className="glass-pill mx-auto w-fit">
-                                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-dot)]" />
-                                Available now
-                            </div>
-                            <h2 className="mt-5 text-balance text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[var(--color-1)]">
-                                Got a role that fits? <span className="text-accent">Reach out.</span>
+                            <h2 className="text-balance text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[var(--color-1)]">
+                                Get in touch
                             </h2>
                             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)]">
                                 I&apos;m looking for a full-time software engineering role.
-                                Pick whatever channel works for you. I reply fast.
+                                Email is fastest:{" "}
+                                <a className="underline underline-offset-4" href="mailto:arkanullahs@gmail.com">
+                                    arkanullahs@gmail.com
+                                </a>
                             </p>
                             <div className="mt-8 flex flex-col items-center gap-3">
                                 <GlassButton size="lg" className="group w-full max-w-xs !justify-center" onClick={open}>
                                     <Mail className="h-4 w-4" aria-hidden />
-                                    Get in touch
+                                    Contact me
                                     <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                                 </GlassButton>
                                 <p className="text-xs text-[var(--text-muted)]">Gmail, Facebook, LinkedIn or GitHub</p>

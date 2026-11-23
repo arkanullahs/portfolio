@@ -7,7 +7,6 @@ import { Hero } from "@/components/hero";
 import { LiquidBackground } from "@/components/liquid-background";
 import { Nav } from "@/components/nav";
 import { Projects } from "@/components/projects";
-import { ServicesMarquee } from "@/components/services-marquee";
 import { Stack } from "@/components/stack";
 import { Strengths } from "@/components/strengths";
 import { getGitHubStats } from "@/lib/github";
@@ -22,9 +21,8 @@ export default async function HomePage() {
         <main className="relative min-h-screen">
             <LiquidBackground />
             <Nav />
-            <Hero gh={gh} />
+            <Hero />
             <Flagship />
-            <ServicesMarquee />
             <Projects />
             <Strengths />
             <ContributionGraph gh={gh} />

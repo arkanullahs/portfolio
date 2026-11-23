@@ -33,9 +33,7 @@ export function Stack() {
         <section id="stack" className="snap-major section-x relative py-16 sm:py-24">
             <div ref={revealRef} className="container-x">
                 <SectionHeading
-                    eyebrow="Stack"
-                    title="What I work with."
-                    description="Stronger in some of these than others. The ones I don't know yet, I'm happy to learn."
+                    title="Tools I use"
                 />
 
                 <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

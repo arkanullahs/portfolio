@@ -14,7 +14,7 @@ export function About() {
         <section id="about" className="snap-major section-x relative py-16 sm:py-24">
             <div ref={revealRef} className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                    <SectionHeading eyebrow="About" title="A bit about me." />
+                    <SectionHeading title="About" />
 
                     <div className="scroll-reveal mt-6 space-y-4">
                         {site.about.map((p, i) => (

@@ -5,7 +5,7 @@ import { ArrowUpRight, Check, Github } from "lucide-react";
 import { gridProjects } from "@/config/projects";
 import { GlassCard } from "@/components/liquid-glass/glass-card";
 import { SectionHeading } from "@/components/section-heading";
-import { ProjectCover } from "@/components/project-cover";
+import Image from "next/image";
 import { SkillIcon } from "@/components/brand-icons";
 import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
@@ -16,9 +16,8 @@ export function Projects() {
         <section id="work" className="snap-major section-x relative py-16 sm:py-24">
             <div ref={revealRef} className="container-x">
                 <SectionHeading
-                    eyebrow="Work"
-                    title="The rest of what I've shipped."
-                    description="Every card links to a real GitHub repo. Open one to read the code and the README."
+                    title="Other projects"
+                    description="Each one links to its source on GitHub."
                 />
 
                 <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -36,46 +35,46 @@ export function Projects() {
                                 className="block"
                             >
                                 <GlassCard className="lift group relative overflow-hidden p-0">
-                                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-[23px]">
-                                        <ProjectCover
-                                            title={p.title}
-                                            emoji={p.emoji}
-                                            cover={p.cover}
-                                            accentIndex={i}
-                                        />
-                                        {p.badge && (
-                                            <span
-                                                className="absolute left-4 top-4 rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md"
-                                                style={{
-                                                    borderColor: "var(--glass-border-strong)",
-                                                    background: "var(--surface-translucent)",
-                                                    color: "var(--color-1)",
-                                                }}
-                                            >
-                                                {p.badge}
-                                            </span>
-                                        )}
-                                        <div className="absolute right-4 top-4">
-                                            <span
-                                                className="grid h-9 w-9 place-items-center rounded-full border backdrop-blur-md transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                                                style={{
-                                                    borderColor: "var(--glass-border-strong)",
-                                                    background: "var(--surface-translucent)",
-                                                    color: "var(--color-1)",
-                                                }}
-                                            >
-                                                <ArrowUpRight className="h-4 w-4" aria-hidden />
-                                            </span>
+                                    {p.image && (
+                                        <div
+                                            className="overflow-hidden rounded-t-[23px] border-b"
+                                            style={{ borderColor: "var(--glass-border)" }}
+                                        >
+                                            <Image
+                                                src={p.image.src}
+                                                alt={p.image.alt}
+                                                width={p.image.width}
+                                                height={p.image.height}
+                                                sizes="(min-width: 768px) 560px, 100vw"
+                                                className="block h-auto w-full"
+                                            />
                                         </div>
-                                    </div>
+                                    )}
 
                                     <div className="relative p-6 sm:p-7">
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div>
+                                                {p.badge && (
+                                                    <div
+                                                        className="mb-1 text-xs"
+                                                        style={{ color: "var(--text-muted)" }}
+                                                    >
+                                                        {p.badge}
+                                                    </div>
+                                                )}
                                         <h3
                                             className="text-xl font-semibold tracking-tight"
                                             style={{ color: "var(--color-1)" }}
                                         >
                                             {p.title}
                                         </h3>
+                                            </div>
+                                            <ArrowUpRight
+                                                className="mt-1 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                                style={{ color: "var(--text-muted)" }}
+                                                aria-hidden
+                                            />
+                                        </div>
                                         <p
                                             className="mt-1 text-sm"
                                             style={{ color: "var(--text-muted)" }}

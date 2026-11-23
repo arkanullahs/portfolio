@@ -24,8 +24,7 @@ export function Flagship() {
         >
             <div ref={revealRef} className="container-x">
                 <SectionHeading
-                    eyebrow="Flagship"
-                    title="BhaloPhone."
+                    title="BhaloPhone"
                     description={p.blurb}
                 />
 
@@ -198,9 +197,11 @@ function LiveSiteShowcase({ href }: { href: string }) {
 
                 {/* Phone */}
                 <div
-                    className="absolute bottom-0 right-3 w-[26%] min-w-[96px] max-w-[150px] overflow-hidden rounded-[22px] border-[5px] border-[#111] transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:right-[-10px]"
+                    className="absolute bottom-0 right-3 w-[26%] min-w-[96px] max-w-[150px] rounded-[20px] bg-[#111] px-[4px] pb-[12px] pt-[12px] transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:right-[-10px]"
                     style={{ boxShadow: "0 24px 40px -12px rgba(0,0,0,0.55)" }}
                 >
+                    <span className="absolute left-1/2 top-[5px] h-[3px] w-[22%] -translate-x-1/2 rounded-full bg-[#2a2a2a]" aria-hidden />
+                    <div className="overflow-hidden rounded-[3px]">
                     <Image
                         src="/shots/bhalophone-mobile.png"
                         alt="bhalophone.com on a phone"
@@ -209,6 +210,7 @@ function LiveSiteShowcase({ href }: { href: string }) {
                         sizes="150px"
                         className="block h-auto w-full"
                     />
+                    </div>
                 </div>
             </Link>
             <figcaption className="mt-3 text-xs" style={{ color: "var(--text-muted)" }}>

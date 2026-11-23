@@ -12,21 +12,21 @@ export const site = {
     /* Headline that reads well to recruiters scanning quickly */
     role: "Software engineer · CSE graduate · Full-stack, AI & Linux",
 
-    /* Sits in the hero status pill, next to the live dot */
-    seeking: "Open to full-time software engineering roles",
+    /* Hero, under the tagline */
+    seeking: "Looking for a full-time software engineering role.",
 
-    /* Tagline — humanized: no em dash, no clichés, has a point of view */
+    /* Hero lead and meta description */
     tagline:
-        "Computer Science graduate in Dhaka. I built BhaloPhone, an AI phone recommendation platform that's live and answering real buying questions across Bangladesh, plus open-source Linux firmware for a TP-Link router and three more apps across MERN, Flutter and Laravel.",
+        "I build and run BhaloPhone, a phone price site that tracks 17 shops across Bangladesh, on two old phones in my house. I also wrote Linux firmware for a TP-Link router that OpenWrt doesn't support.",
 
     /* About — first person, varied rhythm */
     about: [
-        "I graduated in Computer Science from Ahsanullah University of Science and Technology in 2026. I got into code because I kept wanting apps that didn't exist yet, so I started building them. That habit never really wore off.",
-        "BhaloPhone is the clearest example. Buying a phone here means opening a dozen shop tabs and guessing, so I built the thing that reads 17 shops for you: scrapers, a RAG pipeline over real listings, an LLM layer that survives free-tier limits, and a content pipeline that posts prices and reels every day. When the managed database cut us off, I moved the backend onto two old phones at home. Founder, backend, frontend and ops, because there was nobody else.",
+        "I graduated in Computer Science from Ahsanullah University of Science and Technology in 2026. I started writing code to build apps I wanted and couldn't find.",
+        "BhaloPhone is the clearest example. Buying a phone here means opening a dozen shop tabs and guessing, so I built the thing that reads 17 shops for you: scrapers, a RAG pipeline over real listings, an LLM layer that survives free-tier limits, and a content pipeline that posts prices and reels every day. When the managed database cut us off, I moved the backend onto two old phones at home. Founder, backend, frontend and ops.",
         "Before that: NextEd, eCrunchies and BookNest, across MERN, Flutter with Firebase, and Laravel. All went from an empty repo to something that works, either solo or with a classmate or two.",
         "Outside the web stack I built RockSolid, open-source firmware for the TP-Link TL-WR841N v14. OpenWrt ships no image for it because the router has only 4 MB of flash, so I configured and cross-compiled the Linux kernel and OpenWrt from source, cut both down until they fit, and tuned the WiFi for a crowded neighbourhood. It runs on a real router and the source is on GitHub.",
-        "I also edit educational videos for Ascend IELTS. Sounds unrelated to code, but it taught me a lot about pacing and the small details that make something feel finished instead of rushed.",
-        "I'm looking for a full-time software engineering role. I pick things up fast, I ask good questions, and I finish what I start.",
+        "I also produce IELTS video lessons for Ascend IELTS, which taught me to care about pacing and small details.",
+        "I'm looking for a full-time software engineering role.",
     ] as const,
 
     location: "Dhaka, Bangladesh",

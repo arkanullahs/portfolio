@@ -19,6 +19,8 @@ export type Project = {
     href?: string;
     /** Deployed URL, if there is one. */
     live?: string;
+    /** A real screenshot of the project. Cards without one show no image. */
+    image?: { src: string; alt: string; width: number; height: number };
     emoji: string;
     cover: "browser" | "mobile";
     badge?: string;
@@ -85,6 +87,12 @@ export const projects: Project[] = [
         ],
         stack: ["Linux kernel", "OpenWrt", "Embedded Linux", "Docker", "Shell", "CSS"],
         href: "https://github.com/arkanullahs/tl-wr841n-v14-rocksolid",
+        image: {
+            src: "/shots/rocksolid.png",
+            alt: "RockSolid sign-in page in the router's web interface",
+            width: 1280,
+            height: 480,
+        },
         emoji: "RS",
         cover: "browser",
         badge: "Open source · Embedded Linux",
@@ -103,6 +111,13 @@ export const projects: Project[] = [
         ],
         stack: ["MongoDB", "Express", "React", "Node.js"],
         href: "https://github.com/arkanullahs/nextEd",
+        live: "https://nexted-frontend.vercel.app",
+        image: {
+            src: "/shots/nexted.png",
+            alt: "NextEd home page",
+            width: 1280,
+            height: 480,
+        },
         emoji: "NE",
         cover: "browser",
         badge: "MERN · Solo",

@@ -15,9 +15,7 @@ export function Achievements() {
         <section id="achievements" className="snap-major section-x relative py-16 sm:py-24">
             <div ref={revealRef} className="container-x">
                 <SectionHeading
-                    eyebrow="Recognition"
-                    title="One I'm proud of."
-                    description="Competed solo, shipped a full design, and took first place."
+                    title="Awards"
                 />
 
                 <div className="mt-12 mx-auto grid grid-cols-1 gap-6 max-w-5xl">
